@@ -1,13 +1,14 @@
 import React from 'react';
 
+import Contexts from './contexts';
 import GlobalStyles from './styles/global';
 
 const App: React.FC = () => {
   return (
-    <div className="app_wrapper">
+    <Contexts>
       <div className="a"></div>
       <GlobalStyles />
-    </div>
+    </Contexts>
   );
 };
 

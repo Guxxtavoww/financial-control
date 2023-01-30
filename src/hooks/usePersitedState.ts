@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction, useLayoutEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react';
+
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 type HookResponse<T> = [T, Dispatch<SetStateAction<T>>];
 
@@ -11,7 +13,7 @@ function usePersitedState<T>(key: string, initialValue: T): HookResponse<T> {
     return JSON.parse(storageValue) as T;
   });
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
 

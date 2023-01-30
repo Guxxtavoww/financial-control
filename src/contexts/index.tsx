@@ -1,9 +1,9 @@
-import React from "react";
+import _React from "react";
 
-import { WithChildren } from "../types";
+import { FCWithChildren } from "../types";
 import { MobileProvider } from "./Mobile";
 
-const Contexts: React.FC<WithChildren> = ({ children }) => (
+const Contexts: FCWithChildren<{}, true> = ({ children }) => (
   <MobileProvider>
     {children}
   </MobileProvider>  

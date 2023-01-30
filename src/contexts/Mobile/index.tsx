@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useCallback, useState } from 'react';
+import _React, { createContext, useContext, useCallback, useState } from 'react';
 
-import { WithChildren } from '../../types';
+import { FCWithChildren } from '../../types';
 import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 
 interface IMobileContextProps {
@@ -11,7 +11,7 @@ const MobileContext = createContext<IMobileContextProps>(
   {} as IMobileContextProps
 );
 
-export const MobileProvider: React.FC<WithChildren> = ({
+export const MobileProvider: FCWithChildren<{}, true> = ({
   children,
 }) => {
   const [isMobileDevice, setIsMobileDevice] = useState(false);

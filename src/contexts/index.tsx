@@ -1,16 +1,22 @@
 import { FCWithChildren } from '@/types';
+import { ComposeProviders } from '@/components';
 
-import ComposeProvider from '@/components/tools/ComposeProviders';
 import { MobileProvider } from './Mobile';
 import { NotificationsProvider } from './Notifications';
+import { FinancesProvider } from './Finances';
 import { ThemeProvider } from './Theme';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <ComposeProvider
-    with={[ThemeProvider, NotificationsProvider, MobileProvider]}
+  <ComposeProviders
+    with={[
+      ThemeProvider,
+      NotificationsProvider,
+      MobileProvider,
+      FinancesProvider,
+    ]}
   >
     {children}
-  </ComposeProvider>
+  </ComposeProviders>
 );
 
 export default Contexts;

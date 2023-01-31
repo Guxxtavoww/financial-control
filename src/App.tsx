@@ -1,11 +1,13 @@
-import { FCWithChildren } from './types';
+import React from 'react';
+
 import Contexts from './contexts';
 import GlobalStyles from './styles/global';
-import Test from './components/Test';
 
-const App: FCWithChildren = () => (
+import Finances from './containers/Finances';
+
+const App: React.FC = () => (
   <Contexts>
-    <Test />
+    <Finances />
     <GlobalStyles />
   </Contexts>
 );

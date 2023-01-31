@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@mui/material": "^5.11.6",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"
@@ -31,5 +32,8 @@
     "typescript": "^4.9.3",
     "vite": "^4.0.0",
     "vite-tsconfig-paths": "^4.0.5"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   }
 }

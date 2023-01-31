@@ -1,4 +1,4 @@
-import _React, { createContext, useContext, useCallback, useState } from 'react';
+import R { createContext, useContext, useCallback, useState } from 'react';
 
 import { FCWithChildren } from '../../types';
 import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
@@ -11,9 +11,7 @@ const MobileContext = createContext<IMobileContextProps>(
   {} as IMobileContextProps
 );
 
-export const MobileProvider: FCWithChildren<{}, true> = ({
-  children,
-}) => {
+export const MobileProvider: FCWithChildren<{}, true> = ({ children }) => {
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   const handleWindowResize = useCallback(() => {

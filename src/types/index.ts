@@ -4,7 +4,10 @@ export interface IFinance {
   id: string | number;
 }
 
-export type FCWithChildren<T = {}, Required extends boolean = false> = FC<
+export type FCWithChildren<
+  T = Record<string, never>,
+  Required extends boolean = false
+> = FC<
   Required extends true
     ? T & { children: ReactNode }
     : T & { children?: ReactNode }

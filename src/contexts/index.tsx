@@ -1,4 +1,4 @@
-import { FCWithChildren } from '../types';
+import { FCWithChildren } from '@/types';
 import { MobileProvider } from './Mobile';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (

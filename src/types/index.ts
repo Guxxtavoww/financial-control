@@ -6,9 +6,9 @@ export interface IFinance {
 
 export type FCWithChildren<
   T = {},
-  Required extends boolean = false
+  IsChildrenRequired extends boolean = false
 > = FC<
-  Required extends true
+  IsChildrenRequired extends true
     ? T & { children: ReactNode }
     : T & { children?: ReactNode }
 >;

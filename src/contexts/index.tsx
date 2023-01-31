@@ -7,7 +7,7 @@ import { ThemeProvider } from './Theme';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
   <ComposeProvider
-    with={[MobileProvider, NotificationsProvider, ThemeProvider]}
+    with={[ThemeProvider, NotificationsProvider, MobileProvider]}
   >
     {children}
   </ComposeProvider>

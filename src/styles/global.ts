@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+// const greenColor = '#018281';
+
 const GlobalStyles = createGlobalStyle`
   *,
   *::before,

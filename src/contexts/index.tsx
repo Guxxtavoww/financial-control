@@ -1,10 +1,13 @@
 import { FCWithChildren } from '@/types';
 import { MobileProvider } from './Mobile';
+import { NotificationsProvider } from './Notifications';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <MobileProvider>
-    {children}
-  </MobileProvider>  
+  <NotificationsProvider>
+    <MobileProvider>
+      {children}
+    </MobileProvider>
+  </NotificationsProvider>
 );
 
 export default Contexts;

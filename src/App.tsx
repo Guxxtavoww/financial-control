@@ -10,5 +10,4 @@ const App: FCWithChildren = () => (
   </Contexts>
 );
 
-
 export default App;

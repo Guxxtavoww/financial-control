@@ -2,7 +2,7 @@ export type Themes = 'light' | 'dark';
 
 export interface IThemeColors {
   greenBg: string;
-  mainBg: string;  
+  mainBg: string;
 }
 
 export const GREEN_BG_LIGHT = '#018281';

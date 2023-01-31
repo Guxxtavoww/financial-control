@@ -7,7 +7,7 @@ const light: DefaultTheme = {
   colors: {
     greenBg: GREEN_BG_LIGHT,
     mainBg: MAIN_BG_LIGHT,
-  }  
+  },
 };
 
 export default light;

@@ -12,20 +12,27 @@ export interface IThemeContextProps {
   setTheme: (themeName: Themes) => void;
 }
 
-const ThemeContext = createContext<IThemeContextProps>({} as IThemeContextProps);
+const ThemeContext = createContext<IThemeContextProps>(
+  {} as IThemeContextProps
+);
 
 export const ThemeProvider: FCWithChildren<{}, true> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = usePersitedState<Themes>('theme', 'light');  
+  const [currentTheme, setCurrentTheme] = usePersitedState<Themes>(
+    'theme',
+    'light'
+  );
 
   const toggleTheme = useCallback(() => {
-    setCurrentTheme(prevState => prevState === 'light' ? 'dark' : 'light');
+    setCurrentTheme(prevState => (prevState === 'light' ? 'dark' : 'light'));
   }, [setCurrentTheme]);
 
   const setTheme = (themeName: Themes) => setCurrentTheme(themeName);
 
   return (
     <ThemeContext.Provider value={{ toggleTheme, setTheme }}>
-      <StyledComponentThemeProvider theme={currentTheme === 'light' ? light : dark}>
+      <StyledComponentThemeProvider
+        theme={currentTheme === 'light' ? light : dark}
+      >
         {children}
       </StyledComponentThemeProvider>
     </ThemeContext.Provider>
@@ -35,7 +42,10 @@ export const ThemeProvider: FCWithChildren<{}, true> = ({ children }) => {
 export function useTheme() {
   const context = useContext(ThemeContext);
 
-  if (!context) return;
+  if (!context)
+    throw new Error(
+      'Use o hook dentro de um componente, que está dentro do provider'
+    );
 
   return context;
 }

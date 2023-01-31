@@ -9,7 +9,7 @@ const Test: FCWithChildren = () => {
   useIsomorphicLayoutEffect(() => {
     console.log({ isMobileDevice });
   }, [isMobileDevice]);
-  
+
   return (
     <div className="a">
       <a href="">b</a>

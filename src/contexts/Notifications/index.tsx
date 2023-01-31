@@ -11,6 +11,7 @@ const NotificationContext = createContext<INotificationsContextProps>({} as INot
 export const NotificationsProvider: FCWithChildren<{}, true> = ({ children }) => {
   const pushNotification = useCallback((title: string, options?: NotificationOptions) => {
     console.log({ title, options });
+    new Notification(title, options);
   }, []);
   
   return (

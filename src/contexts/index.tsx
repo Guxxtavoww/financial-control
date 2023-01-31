@@ -1,5 +1,3 @@
-import _React from 'react';
-
 import { FCWithChildren } from '../types';
 import { MobileProvider } from './Mobile';
 

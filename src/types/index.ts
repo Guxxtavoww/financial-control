@@ -5,7 +5,7 @@ export interface IFinance {
 }
 
 export type FCWithChildren<
-  T = Record<string, never>,
+  T = {},
   Required extends boolean = false
 > = FC<
   Required extends true

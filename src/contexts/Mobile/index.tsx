@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useCallback, useState } from 'react';
+import { createContext, useContext, useCallback, useState } from 'react';
 
 import { FCWithChildren } from '@/types';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';

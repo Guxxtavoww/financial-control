@@ -15,7 +15,7 @@ export interface IThemeContextProps {
 const ThemeContext = createContext<IThemeContextProps>({} as IThemeContextProps);
 
 export const ThemeProvider: FCWithChildren<{}, true> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = usePersitedState<Themes>('theme', 'dark');  
+  const [currentTheme, setCurrentTheme] = usePersitedState<Themes>('theme', 'light');  
 
   const toggleTheme = useCallback(() => {
     setCurrentTheme(prevState => prevState === 'light' ? 'dark' : 'light');

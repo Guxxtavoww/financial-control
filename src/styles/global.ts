@@ -20,6 +20,11 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     overflow-x: hidden;
   }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
 `;
 
 export default GlobalStyles;

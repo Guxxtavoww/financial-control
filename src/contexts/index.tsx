@@ -1,13 +1,16 @@
 import { FCWithChildren } from '@/types';
 import { MobileProvider } from './Mobile';
 import { NotificationsProvider } from './Notifications';
+import { ThemeProvider } from './Theme';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <NotificationsProvider>
-    <MobileProvider>
-      {children}
-    </MobileProvider>
-  </NotificationsProvider>
+  <ThemeProvider>
+    <NotificationsProvider>
+      <MobileProvider>
+        {children}
+      </MobileProvider>
+    </NotificationsProvider>
+  </ThemeProvider>
 );
 
 export default Contexts;

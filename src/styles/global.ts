@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// const greenColor = '#018281';
-
 const GlobalStyles = createGlobalStyle`
   *,
   *::before,
@@ -21,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: ${props => props.theme.colors.mainBg};
   }
 
   img {

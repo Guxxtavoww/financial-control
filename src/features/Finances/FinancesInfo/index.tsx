@@ -12,9 +12,9 @@ const FinancesInfo: React.FC = () => {
 
   return (
     <ContentRow>
-      <InfoCard amout={hasFinances ? income : 0} card_type="in" />
-      <InfoCard amout={hasFinances ? outcome : 0} card_type="out" />
-      <InfoCard amout={hasFinances ? fullAmount : 0} card_type="result" />
+      <InfoCard amount={hasFinances ? income : 0} card_type="in" />
+      <InfoCard amount={hasFinances ? outcome : 0} card_type="out" />
+      <InfoCard amount={hasFinances ? fullAmount : 0} card_type="result" />
     </ContentRow>
   );
 };

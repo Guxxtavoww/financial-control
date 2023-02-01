@@ -7,16 +7,16 @@ import { InfoCardContainer, InfoCardHeader, Amount } from './styles';
 
 export interface IInfoCardProps {
   card_type: 'in' | 'out' | 'result';
-  amout: number;
+  amount: number;
 }
 
-const InfoCard: React.FC<IInfoCardProps> = ({ amout, card_type }) => (
+const InfoCard: React.FC<IInfoCardProps> = ({ amount, card_type }) => (
   <InfoCardContainer>
     <InfoCardHeader>
       <span className="titleDesc">{handleCardType(card_type)}</span>
       <div className="iconBx">{handleCardType(card_type, true)}</div>
     </InfoCardHeader>
-    <Amount>{formatToCurrency(amout)}</Amount>
+    <Amount>{formatToCurrency(amount)}</Amount>
   </InfoCardContainer>
 );
 

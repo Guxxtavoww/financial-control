@@ -1,15 +1,3 @@
-export type Themes = 'light' | 'dark';
-
-export interface IThemeColors {
-  greenBg: string;
-  mainBg: string;
-  cardBg: string;
-  importantTextColor: string;
-  borderInput: string;
-  toggleThemeButtonBg: string;
-  toggleThemeButtonClr: string;
-}
-
 export const GREEN_BG_LIGHT = '#018281';
 export const MAIN_BG_LIGHT = '#F5F5F5';
 export const CARD_BG_LIGHT = '#ffffff';
@@ -23,5 +11,3 @@ export const CARD_BG_DARK = '#262639';
 export const IMPORTANT_TEXT_COLOR_DARK = '#F2F2F2';
 export const TOGGLE_THEME_BUTTON_BG_DARK = '#F8F8F8';
 export const TOGGLE_THEME_BUTTON_COLOR_DARK = '#0D0D0D';
-
-

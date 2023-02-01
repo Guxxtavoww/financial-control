@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 
 import { FCWithChildren } from '@/types';
-import { Themes } from '@/styles/constants';
+import { Themes } from '@/styles/constants/types';
 import usePersitedState from '@/hooks/usePersitedState';
 import light from '@/styles/themes/light';
 import dark from '@/styles/themes/dark';

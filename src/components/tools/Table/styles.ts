@@ -15,4 +15,18 @@ export const TableContainer = styled.table`
       }
     }
   }
+
+  tbody tr {
+    border-bottom: 1px solid #0d0d0d0d;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  thead {
+    margin-bottom: 10px;
+
+    tr {
+      border-bottom: 1px solid #0d0d0d;
+    }
+  }
 `;

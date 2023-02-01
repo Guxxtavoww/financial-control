@@ -44,7 +44,6 @@ const FinancesForm: React.FC = () => {
 
       addFinance(newFinance);
       handleAfterSubmit();
-      console.log({ newFinance });
     },
     [addFinance]
   );

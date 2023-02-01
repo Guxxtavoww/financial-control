@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
+import { useSnackbar } from 'notistack';
 
 import { IFinance } from '@/types';
 import { Input } from '@/components';
@@ -19,6 +20,7 @@ interface IFormData {
 const FinancesForm: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addFinance } = useFinances();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleAfterSubmit = () => {
     setFieldValue<IFormData>(formRef, {
@@ -40,13 +42,18 @@ const FinancesForm: React.FC = () => {
         type: !formData.isIn ? 'in' : 'out',
       };
 
-      if (newFinance.description === '' || Number.isNaN(newFinance.amount))
+      if (newFinance.description === '' || Number.isNaN(newFinance.amount)) {
+        enqueueSnackbar('Insira dados válidos', {
+          variant: 'warning',
+        });
+
         return;
+      }
 
       addFinance(newFinance);
       handleAfterSubmit();
     },
-    [addFinance]
+    [addFinance, enqueueSnackbar]
   );
 
   return (

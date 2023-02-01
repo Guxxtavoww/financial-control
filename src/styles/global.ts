@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
+import { Button as MUIButton } from '@material-ui/core';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -55,7 +56,7 @@ export const ContentRow = styled.div<{ hasBg?: boolean }>`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(MUIButton)`
   text-transform: unset !important;
   font-weight: 600;
   font-size: 12px;

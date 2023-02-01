@@ -1,13 +1,14 @@
 /* eslint-disable indent */
 import React, { useCallback, useRef } from 'react';
+import { FormHandles } from '@unform/core';
 
-import { ContentRow, Button } from '@/styles/global';
-import { Input } from '@/components';
-import { FormContainer, InputsWrapper } from './styles';
 import { IFinance } from '@/types';
+import { Input } from '@/components';
+import { ContentRow, Button } from '@/styles/global';
 import { useFinances } from '@/contexts/FinancesContext';
 import { setFieldValue, focusOnField } from '@/utils/formFunctions';
-import { FormHandles } from '@unform/core';
+
+import { FormContainer, InputsWrapper } from './styles';
 
 interface IFormData {
   description: string;

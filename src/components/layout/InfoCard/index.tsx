@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { formatToCurrency } from '@/utils/formatToCurrency';
+import { formatToCurrency } from '@/utils/formatValues';
 
 import { handleCardType } from './helpers';
 import { InfoCardContainer, InfoCardHeader, Amount } from './styles';

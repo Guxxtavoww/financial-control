@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { IconButton } from '@material-ui/core';
 
-export const ToggleThemeContainer = styled.button`
+export const ToggleThemeContainer = styled(IconButton)`
   position: fixed;
   bottom: 2.5rem;
   right: 2.5rem;
@@ -16,5 +17,9 @@ export const ToggleThemeContainer = styled.button`
     max-width: 35px !important;
     color: ${props => props.theme.colors.toggleThemeButtonClr} !important;
     fill: ${props => props.theme.colors.toggleThemeButtonClr} !important;
+  }
+
+  &:hover {
+    background-color: ${props => props.theme.colors.toggleThemeButtonBg} !important;
   }
 `;

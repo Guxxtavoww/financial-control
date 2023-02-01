@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable indent */
 import { ITableProps } from './types';
 import { TableContainer } from './styles';
 
@@ -10,7 +12,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
         <tr key={`${Date.now()}theader${Math.random()}`}>
           {columns.map(c => (
             <th key={`${Date.now()}c${Math.random()}`}>
-              <h1>{c.columnName}</h1>
+              <h1 className="columnTitle">{c.columnName}</h1>
             </th>
           ))}
         </tr>
@@ -28,6 +30,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 {column.renderItem ? (
                   column.renderItem(row)
                 ) : (
+                  // @ts-ignore
                   <span>{row[column.field] as JSX.Element}</span>
                 )}
               </td>

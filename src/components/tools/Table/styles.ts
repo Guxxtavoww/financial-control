@@ -4,6 +4,7 @@ export const TableContainer = styled.table`
   width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
+  table-layout: fixed;
 
   thead,
   tbody {
@@ -11,7 +12,7 @@ export const TableContainer = styled.table`
       white-space: nowrap;
       td,
       th {
-        padding: 8px 8px;
+        padding: 8px;
       }
     }
   }
@@ -28,5 +29,11 @@ export const TableContainer = styled.table`
     tr {
       border-bottom: 1px solid #0d0d0d;
     }
+  }
+
+  h1.columnTitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: ${props => props.theme.colors.importantTextColor};
   }
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface ITableColumn<T = {}> {
   columnName: string;
-  field: keyof T;
+  field: keyof T | undefined;
   alignTo?: 'left' | 'right' | 'center';
   renderItem?: (row: T) => React.ReactNode | string;
 }

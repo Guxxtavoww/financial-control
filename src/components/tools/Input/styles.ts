@@ -1,17 +1,20 @@
 /* eslint-disable indent */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<{ isRow: boolean }>`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  width: fit-content;
+  flex-direction: ${props => (props.isRow ? 'row' : 'column')};
+  align-items: ${props => (props.isRow ? 'center' : 'flex-start')};
+  justify-content: center;
+  gap: ${props => (props.isRow ? '8px' : '4px')};
+  min-height: 80px;
 
   input {
-    width: 100%;
-    padding: 2px 8px;
-    border-radius: 8px;
+    flex: 1;
+    max-height: 35px;
+
+    padding: 5px 10px;
+    border-radius: 6px;
     border: 1px solid ${props => props.theme.colors.borderInput};
     font-size: 13px;
     transition: 0.2s ease;
@@ -23,6 +26,10 @@ export const InputContainer = styled.div`
       line-height: 45px;
       font-weight: 400;
       color: #b5b5c3;
+    }
+
+    &:focus {
+      border-color: ${props => props.theme.colors.greenBg};
     }
 
     &:disabled {

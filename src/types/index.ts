@@ -1,10 +1,17 @@
-import { ReactNode, FC } from 'react';
+import { ReactNode, FC, InputHTMLAttributes } from 'react';
 
 export interface IFinance {
   id?: string | number;
   description: string;
   amount: string | number;
   type: 'in' | 'out';
+}
+
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  label: string;
+  placeholder?: string;
+  isRow?: boolean;
 }
 
 export type FCWithChildren<

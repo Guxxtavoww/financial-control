@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { Button as MUIButton } from '@mui/material';
 
 const GlobalStyles = createGlobalStyle`
@@ -29,15 +29,23 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export const ContentRow = styled.div`
+export const ContentRow = styled.div<{ hasBg?: boolean }>`
   width: 100%;
   max-width: 1350px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 0 10px;
   gap: 1rem;
+
+  ${props =>
+    props.hasBg &&
+    css`
+      background-color: ${props.theme.colors.cardBg};
+      border-radius: 6px;
+      padding: 1rem !important;
+      box-shadow: 0px 4px 10px 4px rgba(0, 0, 0, 0.05);
+    `}
 
   & > * {
     flex: 1;
@@ -58,6 +66,14 @@ export const Button = styled(MUIButton)`
     display: flex;
     align-items: center;
     gap: 6px;
+  }
+
+  max-width: 130px !important;
+  background-color: ${props => props.theme.colors.greenBg};
+  color: #fff;
+
+  &:hover {
+    background-color: #f00;
   }
 `;
 

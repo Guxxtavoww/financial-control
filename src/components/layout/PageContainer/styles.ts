@@ -19,7 +19,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderTitle = styled.h2`
-  font-size: clamp(1rem, 5vmin, 3rem);
+  font-size: clamp(1rem, 5vmin, 2.8rem);
   color: #fff;
   font-weight: 600;
   letter-spacing: 2px;

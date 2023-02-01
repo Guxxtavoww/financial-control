@@ -3,15 +3,14 @@ import React, { useCallback } from 'react';
 
 import { ContentRow, Button } from '@/styles/global';
 import { Input } from '@/components';
-import { FormContainer, InputsWrapper, ButtonWrapper } from './styles';
+import { FormContainer, InputsWrapper } from './styles';
 import { IFinance } from '@/types';
 import { useFinances } from '@/contexts/FinancesContext';
 
 interface IFormData {
   description: string;
   amount: string | number;
-  in: boolean;
-  out: boolean;
+  isIn: boolean;
 }
 
 const FinancesForm: React.FC = () => {
@@ -21,13 +20,15 @@ const FinancesForm: React.FC = () => {
     (formData: IFormData) => {
       const newFinance: IFinance = {
         amount: Number(formData.amount),
-        description: String(formData.description),
-        type: formData.in ? 'in' : 'out',
+        description: formData.description,
+        type: !formData.isIn ? 'in' : 'out',
       };
 
-      if (!newFinance.description || Number.isNaN(newFinance.amount)) return;
+      if (newFinance.description === '' || Number.isNaN(newFinance.amount))
+        return;
 
       addFinance(newFinance);
+      console.log({ newFinance });
     },
     [addFinance]
   );
@@ -49,12 +50,18 @@ const FinancesForm: React.FC = () => {
             type="number"
             placeholder="Valor"
           />
-          <Input name="in" label="Entrada" type="radio" defaultChecked isRow />
-          <button type="submit">teste</button>
+          <Input
+            name="isIn"
+            label="Entrada"
+            type="radio"
+            defaultChecked
+            isRow
+          />
+          <Input name="isIn" label="Saída" type="radio" isRow />
         </InputsWrapper>
-        <ButtonWrapper>
-          {/* <Button type="submit">Adicionar</Button> */}
-        </ButtonWrapper>
+        <div>
+          <Button type="submit">Adicionar</Button>
+        </div>
       </FormContainer>
     </ContentRow>
   );

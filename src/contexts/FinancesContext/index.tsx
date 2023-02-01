@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useId } from 'react';
+import { createContext, useCallback, useContext } from 'react';
 
 import { FCWithChildren, IFinance } from '@/types';
 import usePersitedState from '@/hooks/usePersitedState';
@@ -17,26 +17,18 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
   const [finances, setFinances] = usePersitedState<IFinance[]>('finances', []);
 
   const addFinance = useCallback((finance: IFinance) => {
-    const id = useId();
+    const now = Date.now().toString();
+    const newFinance: IFinance = { id: now, ...finance };
 
-    const newFinance: IFinance = { id, ...finance };
+    setFinances(prevFiances => [...prevFiances, newFinance]);
+  }, []);
 
-    setFinances(prevFiances => {
-      const mappedFinances = prevFiances.every(f => f.id === id);
-      
-      if (mappedFinances) {
-        console.error('Erro de hook');
-
-        return prevFiances;
-      }
-
-      return [...prevFiances, newFinance];
-    });
-  }, [setFinances]);
-
-  const removeFinance = useCallback((finance: IFinance) => {
-    setFinances(prevState => prevState.filter(f => f.id !== finance.id));
-  }, [setFinances]);
+  const removeFinance = useCallback(
+    (finance: IFinance) => {
+      setFinances(prevState => prevState.filter(f => f.id !== finance.id));
+    },
+    [setFinances]
+  );
 
   return (
     <FinanceContext.Provider value={{ addFinance, finances, removeFinance }}>

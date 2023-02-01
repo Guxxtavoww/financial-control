@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { Button as MUIButton } from '@mui/material';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -27,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
     display: block;
     max-width: 100%;
   }
+
+  button {
+    cursor: pointer;
+  }
 `;
 
 export const ContentRow = styled.div<{ hasBg?: boolean }>`
@@ -52,21 +55,14 @@ export const ContentRow = styled.div<{ hasBg?: boolean }>`
   }
 `;
 
-export const Button = styled(MUIButton)`
+export const Button = styled.button`
   text-transform: unset !important;
-  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 12px;
   padding: 13px 10px !important;
   border-radius: 6px;
   box-shadow: none;
   transition: 0.5s;
-
-  .MuiButton-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
 
   max-width: 130px !important;
   background-color: ${props => props.theme.colors.greenBg};

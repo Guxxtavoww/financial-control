@@ -19,6 +19,3 @@ export const InputsWrapper = styled.div`
   max-width: 680px;
 `;
 
-export const ButtonWrapper = styled.div`
-  flex: 1;
-`;

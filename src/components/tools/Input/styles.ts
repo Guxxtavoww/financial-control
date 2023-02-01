@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const InputContainer = styled.div<{ isRow: boolean }>`
   display: flex;
@@ -7,7 +7,7 @@ export const InputContainer = styled.div<{ isRow: boolean }>`
   align-items: ${props => (props.isRow ? 'center' : 'flex-start')};
   justify-content: center;
   gap: ${props => (props.isRow ? '8px' : '4px')};
-  min-height: 80px;
+  min-height:  ${props => (props.isRow ? '65px' : '80px')};
 
   input {
     flex: 1;

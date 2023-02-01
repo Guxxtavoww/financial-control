@@ -18,9 +18,9 @@ export const InfoCardHeader = styled.div`
     color: ${props => props.theme.colors.importantTextColor};
   }
 
-  .iconBx {
-    fill: ${props => props.theme.colors.importantTextColor};
-    color: ${props => props.theme.colors.importantTextColor};
+  .iconBx > * {
+    fill: ${props => props.theme.colors.importantTextColor} !important;
+    color: ${props => props.theme.colors.importantTextColor} !important;
   }
 `;
 

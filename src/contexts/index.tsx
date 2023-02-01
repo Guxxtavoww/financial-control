@@ -3,7 +3,7 @@ import { ComposeProviders } from '@/components';
 
 import { MobileProvider } from './Mobile';
 import { NotificationsProvider } from './Notifications';
-import { FinancesProvider } from './Finances';
+import { FinancesProvider } from './FinancesContext';
 import { ThemeProvider } from './Theme';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (

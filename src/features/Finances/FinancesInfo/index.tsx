@@ -3,7 +3,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { ContentRow } from '@/styles/global';
 import InfoCard from '@/components/layout/InfoCard';
-import { useFinances } from '@/contexts/Finances';
+import { useFinances } from '@/contexts/FinancesContext';
 import { IFinance } from '@/types';
 
 const FinancesInfo: React.FC = () => {

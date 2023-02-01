@@ -1,12 +1,17 @@
-import { createContext, useCallback, useContext } from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
 
+import { getFullAmount, getIncomeOrOutCome } from './utils';
 import { FCWithChildren, IFinance } from '@/types';
 import usePersitedState from '@/hooks/usePersitedState';
 
 interface IFinanceContextProps {
   finances: IFinance[];
+  income: number;
+  outcome: number;
+  fullAmount: number;
   removeFinance: (finance: IFinance) => void;
   addFinance: (finance: IFinance) => void;
+  clearFinances: () => void;
 }
 
 const FinanceContext = createContext<IFinanceContextProps>(
@@ -30,8 +35,30 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
     [setFinances]
   );
 
+  const income = useMemo(() => getIncomeOrOutCome('in', finances), [finances]);
+  const outcome = useMemo(
+    () => getIncomeOrOutCome('out', finances),
+    [finances]
+  );
+  const fullAmount = useMemo(
+    () => getFullAmount(income, outcome),
+    [income, outcome]
+  );
+
+  const clearFinances = () => setFinances([]);
+
   return (
-    <FinanceContext.Provider value={{ addFinance, finances, removeFinance }}>
+    <FinanceContext.Provider
+      value={{
+        addFinance,
+        finances,
+        removeFinance,
+        fullAmount,
+        income,
+        outcome,
+        clearFinances
+      }}
+    >
       {children}
     </FinanceContext.Provider>
   );

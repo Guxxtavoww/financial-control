@@ -1,11 +1,13 @@
 /* eslint-disable indent */
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { ContentRow, Button } from '@/styles/global';
 import { Input } from '@/components';
 import { FormContainer, InputsWrapper } from './styles';
 import { IFinance } from '@/types';
 import { useFinances } from '@/contexts/FinancesContext';
+import { setFieldValue, focusOnField } from '@/utils/formFunctions';
+import { FormHandles } from '@unform/core';
 
 interface IFormData {
   description: string;
@@ -14,7 +16,20 @@ interface IFormData {
 }
 
 const FinancesForm: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const { addFinance } = useFinances();
+
+  const handleAfterSubmit = () => {
+    setFieldValue<IFormData>(formRef, {
+      fieldName: 'description',
+      value: '',
+    });
+    setFieldValue<IFormData>(formRef, {
+      fieldName: 'amount',
+      value: '',
+    });
+    focusOnField<IFormData>(formRef, 'description');
+  };
 
   const handleFormSubmit = useCallback(
     (formData: IFormData) => {
@@ -28,6 +43,7 @@ const FinancesForm: React.FC = () => {
         return;
 
       addFinance(newFinance);
+      handleAfterSubmit();
       console.log({ newFinance });
     },
     [addFinance]
@@ -35,7 +51,10 @@ const FinancesForm: React.FC = () => {
 
   return (
     <ContentRow hasBg>
-      <FormContainer onSubmit={(data: IFormData) => handleFormSubmit(data)}>
+      <FormContainer
+        onSubmit={(data: IFormData) => handleFormSubmit(data)}
+        ref={formRef}
+      >
         <InputsWrapper>
           <Input
             name="description"

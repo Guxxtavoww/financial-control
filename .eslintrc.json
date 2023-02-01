@@ -22,6 +22,7 @@
     "semi": ["error", "always"],
     "@typescript-eslint/ban-types": "off",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

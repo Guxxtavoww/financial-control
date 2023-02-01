@@ -78,9 +78,7 @@ const FinancesForm: React.FC = () => {
           />
           <Input name="isIn" label="Saída" type="radio" isRow />
         </InputsWrapper>
-        <div>
-          <Button type="submit">Adicionar</Button>
-        </div>
+        <Button type="submit">Adicionar</Button>
       </FormContainer>
     </ContentRow>
   );

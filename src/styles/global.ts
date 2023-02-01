@@ -29,15 +29,17 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export const FinancesContainer = styled.div`
+export const ContentRow = styled.div`
   width: 100%;
   max-width: 1350px;
-  margin: 0 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  & > * {
+    flex: 1;
+  }
 `;
 
 export const Button = styled(MUIButton)`

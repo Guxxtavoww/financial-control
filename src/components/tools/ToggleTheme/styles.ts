@@ -3,8 +3,8 @@ import { IconButton } from '@material-ui/core';
 
 export const ToggleThemeContainer = styled(IconButton)`
   position: fixed;
-  bottom: 2.5rem;
-  right: 2.5rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   background-color: ${props => props.theme.colors.toggleThemeButtonBg};
   width: 50px;
   height: 50px;

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable indent */
 import { ITableProps } from './types';
 import { TableContainer } from './styles';
 

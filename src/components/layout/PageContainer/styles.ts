@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.main`
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Header = styled.header`
@@ -26,10 +29,9 @@ export const HeaderTitle = styled.h2`
 export const ChildrenBox = styled.div`
   position: relative;
   width: 100%;
-  transform: translateY(-60px);
+  transform: translateY(-30px);
   z-index: 3;
   max-width: 1350px;
-  margin: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

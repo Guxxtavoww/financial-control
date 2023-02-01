@@ -1,16 +1,27 @@
 import styled from 'styled-components';
 
 export const InfoCardContainer = styled.div`
+  min-height: 130px;
   border-radius: 6px;
   padding: 14px 1.8rem;
   background-color: ${props => props.theme.colors.cardBg};
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  & > * {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
 export const InfoCardHeader = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 
   .titleDesc {
     font-size: 13px;
@@ -25,7 +36,8 @@ export const InfoCardHeader = styled.div`
 `;
 
 export const Amount = styled.p`
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 700;
   color: ${props => props.theme.colors.importantTextColor};
+  text-align: center;
 `;

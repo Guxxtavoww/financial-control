@@ -35,6 +35,8 @@ export const ContentRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
   gap: 1rem;
 
   & > * {

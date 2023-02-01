@@ -3,7 +3,7 @@ import React from 'react';
 import Contexts from './contexts';
 import GlobalStyles from './styles/global';
 
-import Finances from './containers/Finances';
+import { Finances } from './features';
 
 const App: React.FC = () => (
   <Contexts>

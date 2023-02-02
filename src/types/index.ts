@@ -1,7 +1,7 @@
 import { ReactNode, FC, InputHTMLAttributes } from 'react';
 
 export interface IFinance {
-  id?: string | number;
+  id?: string;
   description: string;
   amount: string | number;
   type: 'in' | 'out';

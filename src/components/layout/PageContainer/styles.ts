@@ -19,7 +19,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderTitle = styled.h2`
-  font-size: clamp(1rem, 5vmin, 2.8rem);
+  font-size: clamp(1rem, 5vmin, 2.7rem);
   color: #fff;
   font-weight: 600;
   letter-spacing: 2px;
@@ -29,7 +29,7 @@ export const HeaderTitle = styled.h2`
 export const ChildrenBox = styled.div`
   position: relative;
   width: 100%;
-  transform: translateY(-30px);
+  transform: translateY(-35px);
   z-index: 3;
   max-width: 1350px;
   display: flex;

@@ -27,7 +27,7 @@ export const TableContainer = styled.table`
     margin-bottom: 10px;
 
     tr {
-      border-bottom: 1px solid #0d0d0d;
+      border-bottom: 1px solid #505050;
     }
   }
 

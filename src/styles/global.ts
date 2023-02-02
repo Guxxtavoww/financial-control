@@ -57,7 +57,7 @@ export const ContentRow = styled.div<{ hasBg?: boolean }>`
   }
 `;
 
-export const Button = styled(MUIButton)`
+export const Button = styled(MUIButton)<{ bg?: string; color?: string }>`
   text-transform: unset !important;
   font-weight: 600;
   font-size: 12px;
@@ -67,8 +67,8 @@ export const Button = styled(MUIButton)`
   transition: 0.5s;
 
   max-width: 130px !important;
-  background-color: ${props => props.theme.colors.greenBg};
-  color: #fff;
+  background-color: ${props => props.bg || props.theme.colors.greenBg};
+  color: ${props => props.color || '#fff'};
 
   &:hover {
     background-color: #f00;

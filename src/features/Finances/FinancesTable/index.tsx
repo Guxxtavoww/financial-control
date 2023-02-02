@@ -18,7 +18,7 @@ const FinancesTable: React.FC = () => {
             { field: 'description', columnName: 'Descrição', alignTo: 'left' },
             { field: 'amount', columnName: 'Valor' },
             {
-              field: 'type',
+              field: undefined,
               columnName: 'Tipo',
               renderItem: row => (
                 <span>{row.type === 'in' ? 'Entrada' : 'Saída'}</span>

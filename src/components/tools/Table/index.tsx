@@ -25,12 +25,8 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 }`}
                 style={{ textAlign: column.alignTo || 'center' }}
               >
-                {column.renderItem ? (
-                  !column.field ? (
-                    column.renderItem(row)
-                  ) : (
-                    column.renderItem(row)
-                  )
+                {column.renderItem && !column.field ? (
+                  column.renderItem(row)
                 ) : (
                   <span>{row[column.field!] as JSX.Element}</span>
                 )}

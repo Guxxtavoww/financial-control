@@ -8,9 +8,9 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
     <TableContainer>
       <thead>
         <tr key={`${Date.now()}theader${Math.random()}`}>
-          {columns.map(c => (
+          {columns.map(column => (
             <th key={`${Date.now()}c${Math.random()}`}>
-              <h1 className="columnTitle">{c.columnName}</h1>
+              <h1 className="columnTitle">{column.columnName}</h1>
             </th>
           ))}
         </tr>

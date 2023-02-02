@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ContentRow } from '@/styles/global';
-import InfoCard from '@/components/layout/InfoCard';
+import { InfoCard } from '@/components';
 import { useFinances } from '@/contexts/FinancesContext';
 
 const FinancesInfo: React.FC = () => {

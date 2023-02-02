@@ -1,8 +1,24 @@
-import { ITableProps } from './types';
+/* eslint-disable indent */
+import { ITableProps, ITableColumn } from './types';
 import { TableContainer } from './styles';
+import { formatToCurrency, formatToDate } from '@/utils/formatValues';
 
 function Table<T>(props: ITableProps<T>): JSX.Element {
   const { columns, rows } = props;
+
+  const formatColumnValue = (
+    formatType: ITableColumn<T>['formatTo'],
+    rowValue: T[keyof T]
+  ) => {
+    switch (formatType) {
+      case 'currency':
+        return formatToCurrency(rowValue);
+      case 'date':
+        return formatToDate(rowValue);
+      default:
+        return Number(rowValue).toString();
+    }
+  };
 
   return (
     <TableContainer>
@@ -29,7 +45,11 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 {column.renderItem && !column.field ? (
                   column.renderItem(row)
                 ) : (
-                  <span>{row[column.field!] as JSX.Element}</span>
+                  <span>
+                    {!column.formatTo
+                      ? (row[column.field!] as JSX.Element)
+                      : formatColumnValue(column.formatTo, row[column.field!])}
+                  </span>
                 )}
               </td>
             ))}

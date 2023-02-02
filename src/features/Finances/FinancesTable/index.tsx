@@ -16,7 +16,7 @@ const FinancesTable: React.FC = () => {
         <Table<IFinance>
           columns={[
             { field: 'description', columnName: 'Descrição', alignTo: 'left' },
-            { field: 'amount', columnName: 'Valor' },
+            { field: 'amount', columnName: 'Valor', formatTo: 'currency' },
             {
               field: undefined,
               columnName: 'Tipo',

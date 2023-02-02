@@ -4,6 +4,7 @@ export interface ITableColumn<T = {}> {
   columnName: string;
   field: keyof T | undefined;
   alignTo?: 'left' | 'right' | 'center';
+  formatTo?: 'currency' | 'number' | 'date';
   renderItem?: (row: T) => React.ReactNode | string;
 }
 

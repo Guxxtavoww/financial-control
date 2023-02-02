@@ -1,4 +1,4 @@
-const formatToCurrency = (value: number): string => {
+const formatToCurrency = (value: any): string => {
   const formater = new Intl.NumberFormat('pt-br', {
     style: 'currency',
     currency: 'BRL',
@@ -8,4 +8,12 @@ const formatToCurrency = (value: number): string => {
   return formater.format(value);
 };
 
-export { formatToCurrency };
+const formatToDate = (value: any): string => {
+  const dateFormater = new Intl.DateTimeFormat('pt-br', {
+    dateStyle: 'full',
+  });
+
+  return dateFormater.format(new Date(value));
+};
+
+export { formatToCurrency, formatToDate };

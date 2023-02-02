@@ -51,13 +51,13 @@ const FinancesForm: React.FC = () => {
       }
 
       addFinance(newFinance);
-      handleAfterSubmit();
       enqueueSnackbar(
         `${newFinance.description} adicionado a lista com sucesso!`,
         {
           variant: 'success',
         }
       );
+      handleAfterSubmit();
     },
     [addFinance, enqueueSnackbar]
   );

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ITableProps } from './types';
 import { TableContainer } from './styles';
 
@@ -27,10 +26,13 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 style={{ textAlign: column.alignTo || 'center' }}
               >
                 {column.renderItem ? (
-                  column.renderItem(row)
+                  !column.field ? (
+                    column.renderItem(row)
+                  ) : (
+                    column.renderItem(row)
+                  )
                 ) : (
-                  // @ts-ignore
-                  <span>{row[column.field] as JSX.Element}</span>
+                  <span>{row[column.field!] as JSX.Element}</span>
                 )}
               </td>
             ))}

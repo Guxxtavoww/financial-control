@@ -16,7 +16,9 @@ const InfoCard: React.FC<IInfoCardProps> = ({ amount, card_type }) => (
       <span className="titleDesc">{handleCardType(card_type)}</span>
       <div className="iconBx">{handleCardType(card_type, true)}</div>
     </InfoCardHeader>
-    <Amount>{formatToCurrency(amount)}</Amount>
+    <Amount isNegative={card_type === 'result' && amount < 0}>
+      {formatToCurrency(amount)}
+    </Amount>
   </InfoCardContainer>
 );
 

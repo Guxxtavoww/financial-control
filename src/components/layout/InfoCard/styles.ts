@@ -35,9 +35,10 @@ export const InfoCardHeader = styled.div`
   }
 `;
 
-export const Amount = styled.p`
+export const Amount = styled.p<{ isNegative?: boolean }>`
   font-size: 26px;
   font-weight: 700;
-  color: ${props => props.theme.colors.importantTextColor};
+  color: ${props =>
+    props.isNegative ? '#f00' : props.theme.colors.importantTextColor};
   text-align: center;
 `;

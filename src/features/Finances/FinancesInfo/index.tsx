@@ -1,14 +1,11 @@
-/* eslint-disable indent */
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { ContentRow } from '@/styles/global';
 import InfoCard from '@/components/layout/InfoCard';
 import { useFinances } from '@/contexts/FinancesContext';
 
 const FinancesInfo: React.FC = () => {
-  const { finances, income, outcome, fullAmount } = useFinances();
-
-  const hasFinances = useMemo(() => finances.length > 0, [finances]);
+  const { income, outcome, fullAmount, hasFinances } = useFinances();
 
   return (
     <ContentRow>

@@ -9,6 +9,7 @@ interface IFinanceContextProps {
   income: number;
   outcome: number;
   fullAmount: number;
+  hasFinances: boolean;
   removeFinance: (finance: IFinance) => void;
   addFinance: (finance: IFinance) => void;
   clearFinances: () => void;
@@ -45,6 +46,8 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
     [income, outcome]
   );
 
+  const hasFinances = useMemo(() => finances.length > 0, [finances]);
+
   const clearFinances = () => setFinances([]);
 
   return (
@@ -56,7 +59,8 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
         fullAmount,
         income,
         outcome,
-        clearFinances
+        clearFinances,
+        hasFinances
       }}
     >
       {children}

@@ -17,19 +17,20 @@ const Input: React.FC<IInputProps> = ({
   const { fieldName, registerField, clearError, defaultValue } = useField(name);
 
   const uniqueId = `${name}${inputId}`;
+  const path =
+    rest.type === 'checkbox' || rest.type === 'radio' ? 'checked' : 'value';
 
   useIsomorphicLayoutEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path:
-        rest.type === 'checkbox' || rest.type === 'radio' ? 'checked' : 'value',
+      path,
       setValue: (ref, value) => {
         ref.value = value;
         clearError();
       },
     });
-  }, [fieldName, registerField, clearError, rest.type]);
+  }, [fieldName, registerField, clearError, path]);
 
   return (
     <InputContainer isRow={!!isRow}>

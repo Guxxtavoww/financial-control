@@ -24,6 +24,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                   Math.random() + new Date().getTime()
                 }`}
                 style={{ textAlign: column.alignTo || 'center' }}
+                className="table-cell"
               >
                 {column.renderItem && !column.field ? (
                   column.renderItem(row)

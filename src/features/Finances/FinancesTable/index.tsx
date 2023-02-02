@@ -10,12 +10,12 @@ import { useFinances } from '@/contexts/FinancesContext';
 import { TableCell, TableWrapper } from './styles';
 
 const FinancesTable: React.FC = () => {
-  const { finances, removeFinance, clearFinances } = useFinances();
+  const { finances, hasFinances, removeFinance, clearFinances } = useFinances();
 
   return (
     <ContentRow hasBg>
-      <TableWrapper hasFinances={finances.length > 0}>
-        {finances.length ? (
+      <TableWrapper hasFinances={hasFinances}>
+        {hasFinances ? (
           <>
             <Button type="button" onClick={clearFinances} bg="#f00">
               Limpar Tudo

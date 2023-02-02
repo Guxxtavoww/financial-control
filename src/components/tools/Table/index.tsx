@@ -9,7 +9,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
   const formatColumnValue = (
     formatType: ITableColumn<T>['formatTo'],
     rowValue: T[keyof T]
-  ) => {
+  ): string => {
     switch (formatType) {
       case 'currency':
         return formatToCurrency(rowValue);

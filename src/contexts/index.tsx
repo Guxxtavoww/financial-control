@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
-import { CircularProgress } from '@material-ui/core';
 
 import { FCWithChildren } from '@/types';
 import { ComposeProviders } from '@/components';
+import { ScreenLoader } from '@/styles/global';
 
 import { SnackbarProvider } from './Snackbar';
 import { MobileProvider } from './Mobile';
@@ -11,7 +11,7 @@ import { FinancesProvider } from './FinancesContext';
 import { ThemeProvider } from './Theme';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <Suspense fallback={<CircularProgress />}>
+  <Suspense fallback={<ScreenLoader />}>
     <ComposeProviders
       with={[
         ThemeProvider,

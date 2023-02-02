@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { Button as MUIButton } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -72,6 +73,13 @@ export const Button = styled(MUIButton)`
   &:hover {
     background-color: #f00;
   }
+`;
+
+export const ScreenLoader = styled(CircularProgress)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export default GlobalStyles;

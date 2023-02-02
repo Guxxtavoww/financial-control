@@ -4,7 +4,9 @@ import Contexts from './contexts';
 import GlobalStyles from './styles/global';
 
 import { ToggleTheme } from './components';
-const Finances = lazy(() => import('./features/Finances'));
+const Finances = lazy(() =>
+  import('./features').then(module => ({ default: module.Finances }))
+);
 
 const App: React.FC = () => (
   <Contexts>

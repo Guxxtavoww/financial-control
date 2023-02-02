@@ -45,7 +45,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 {column.renderItem && !column.field ? (
                   column.renderItem(row)
                 ) : (
-                  <span>
+                  <span className="table-cell-text">
                     {!column.formatTo
                       ? (row[column.field!] as JSX.Element)
                       : formatColumnValue(column.formatTo, row[column.field!])}

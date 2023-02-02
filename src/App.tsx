@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { lazy } from 'react';
 
 import Contexts from './contexts';
 import GlobalStyles from './styles/global';
 
 import { ToggleTheme } from './components';
-import { Finances } from './features';
+const Finances = lazy(() => import('./features/Finances'));
 
 const App: React.FC = () => (
   <Contexts>

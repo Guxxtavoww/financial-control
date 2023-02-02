@@ -20,7 +20,9 @@ const FinancesTable: React.FC = () => {
             {
               field: 'type',
               columnName: 'Tipo',
-              renderItem: row => <span>{row.type}</span>,
+              renderItem: row => (
+                <span>{row.type === 'in' ? 'Entrada' : 'Saída'}</span>
+              ),
             },
             {
               field: undefined,

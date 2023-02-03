@@ -10,7 +10,7 @@ interface IFinanceContextProps {
   outcome: number;
   fullAmount: number;
   hasFinances: boolean;
-  removeFinance: (finance: IFinance) => void;
+  removeFinance: (financeId: string) => void;
   addFinance: (finance: IFinance) => void;
   clearFinances: () => void;
 }
@@ -30,8 +30,8 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
   }, []);
 
   const removeFinance = useCallback(
-    (finance: IFinance) => {
-      setFinances(prevState => prevState.filter(f => f.id !== finance.id));
+    (financeId: string) => {
+      setFinances(prevState => prevState.filter(f => f.id !== financeId));
     },
     [setFinances]
   );

@@ -20,7 +20,7 @@ const SnackbarCloseButton: React.FC<{ id: SnackbarKey }> = ({ id }) => {
 };
 
 export const SnackbarProvider: FCWithChildren<{}, true> = ({ children }) => {
-  const useStyles = makeStyles(() => ({
+  const classes = makeStyles(() => ({
     success: {
       backgroundColor: '#50CD89 !important',
       boxShadow: 'none !important',
@@ -33,9 +33,7 @@ export const SnackbarProvider: FCWithChildren<{}, true> = ({ children }) => {
       backgroundColor: '#F1416C !important',
       boxShadow: 'none !important',
     },
-  }));
-
-  const classes = useStyles();
+  }))();
 
   return (
     <SNCKProvider

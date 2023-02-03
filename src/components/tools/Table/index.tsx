@@ -29,11 +29,11 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 className="table-cell"
               >
                 {column.renderItem ? (
-                  !column.field ? (
-                    column.renderItem(row)
-                  ) : (
-                    column.renderItem(row)
-                  )
+                  <div className="render-item-wrapper">
+                    {!column.field
+                      ? column.renderItem(row)
+                      : column.renderItem(row)}
+                  </div>
                 ) : (
                   <span className="table-cell-text">
                     {!column.formatTo

@@ -13,8 +13,8 @@ import { FormContainer, InputsWrapper } from './styles';
 
 interface IFormData {
   description: string;
-  amount: string | number;
-  isIn: boolean;
+  amount: number;
+  isOut: boolean;
 }
 
 const FinancesForm: React.FC = () => {
@@ -39,10 +39,10 @@ const FinancesForm: React.FC = () => {
       const newFinance: IFinance = {
         amount: Number(formData.amount),
         description: formData.description,
-        type: !formData.isIn ? 'in' : 'out',
+        type: formData.isOut ? 'out' : 'in',
       };
-
-      if (newFinance.description === '' || Number.isNaN(newFinance.amount)) {
+      
+      if (newFinance.description === '' || newFinance.amount <= 0) {
         enqueueSnackbar('Insira dados válidos', {
           variant: 'warning',
         });
@@ -83,13 +83,13 @@ const FinancesForm: React.FC = () => {
             placeholder="Valor"
           />
           <Input
-            name="isIn"
+            name="isOut"
             label="Entrada"
             type="radio"
             defaultChecked
             isRow
           />
-          <Input name="isIn" label="Saída" type="radio" isRow />
+          <Input name="isOut" label="Saída" type="radio" isRow />
         </InputsWrapper>
         <Button type="submit">Adicionar</Button>
       </FormContainer>

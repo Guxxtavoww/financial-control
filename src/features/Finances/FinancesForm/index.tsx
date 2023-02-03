@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
 import { useSnackbar } from 'notistack';

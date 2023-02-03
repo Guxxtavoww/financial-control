@@ -52,7 +52,7 @@ const FinancesTable: React.FC = () => {
                   field: undefined,
                   columnName: '',
                   renderItem: row => (
-                    <IconButton onClick={() => removeFinance(String(row.id))}>
+                    <IconButton onClick={() => removeFinance(row.id!)}>
                       <BiTrash fill="#f00" />
                     </IconButton>
                   ),

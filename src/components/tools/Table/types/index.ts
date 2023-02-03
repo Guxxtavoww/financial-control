@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 export interface ITableColumn<T> {
   columnName: string;
   field: keyof T | undefined;
-  alignTo?: 'left' | 'right' | 'center';
+  alignTo?: CSSProperties['textAlign'];
   formatTo?: 'currency' | 'number' | 'date';
   renderItem?: (row: T) => React.ReactNode | string;
 }

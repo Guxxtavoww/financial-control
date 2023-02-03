@@ -36,4 +36,10 @@ export const TableContainer = styled.table`
     font-weight: 500;
     color: ${props => props.theme.colors.importantTextColor};
   }
+
+  .table-cell-text {
+    color: ${props => props.theme.colors.importantTextColor};
+    font-weight: 500;
+    font-size: 1rem;
+  }
 `;

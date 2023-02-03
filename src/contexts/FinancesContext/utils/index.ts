@@ -1,6 +1,6 @@
 import { IFinance } from '@/types';
 
-export const getIncomeOrOutCome = (
+export const getIncomeOrOutcome = (
   key: IFinance['type'],
   finance: IFinance[]
 ): number => {

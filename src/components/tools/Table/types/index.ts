@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ITableColumn<T = {}> {
+export interface ITableColumn<T> {
   columnName: string;
   field: keyof T | undefined;
   alignTo?: 'left' | 'right' | 'center';
@@ -8,7 +8,7 @@ export interface ITableColumn<T = {}> {
   renderItem?: (row: T) => React.ReactNode | string;
 }
 
-type TableRows<T = {}> = Array<T>;
+type TableRows<T> = Array<T>;
 
 export interface ITableProps<T> {
   columns: Array<ITableColumn<T>>;

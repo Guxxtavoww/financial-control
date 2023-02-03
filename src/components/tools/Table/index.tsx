@@ -28,11 +28,11 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 style={{ textAlign: column.alignTo || 'center' }}
                 className="table-cell"
               >
-                {column.renderItem ? (
+                {!column.field ? (
                   <div className="render-item-wrapper">
-                    {!column.field
+                    {column.renderItem
                       ? column.renderItem(row)
-                      : column.renderItem(row)}
+                      : 'Não há itens pra renderizar'}
                   </div>
                 ) : (
                   <span className="table-cell-text">

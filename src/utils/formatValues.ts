@@ -16,4 +16,13 @@ const formatToDate = (value: any): string => {
   return dateFormater.format(new Date(value));
 };
 
+export const formatToNumber = (
+  value: any,
+  options?: Intl.NumberFormatOptions
+) => {
+  const formater = new Intl.NumberFormat('pt-br', options);
+
+  return formater.format(value);
+};
+
 export { formatToCurrency, formatToDate };

@@ -18,10 +18,7 @@ const Input: React.FC<IInputProps> = ({
   const uniqueId = useMemo(() => `${name}${inputId}`, [name, inputId]);
   const { fieldName, registerField, clearError, defaultValue } = useField(name);
 
-  const path = useMemo(
-    () => (type === 'checkbox' || type === 'radio' ? 'checked' : 'value'),
-    [type]
-  );
+  const path = type === 'checkbox' || type === 'radio' ? 'checked' : 'value';
 
   useIsomorphicLayoutEffect(() => {
     registerField({
@@ -44,7 +41,6 @@ const Input: React.FC<IInputProps> = ({
         ref={inputRef}
         placeholder={placeholder}
         defaultValue={defaultValue}
-        type={type}
         {...rest}
       />
     </InputContainer>

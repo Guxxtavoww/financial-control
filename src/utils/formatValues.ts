@@ -10,7 +10,7 @@ const formatToCurrency = (value: any): string => {
 
 const formatToDate = (value: any): string => {
   const dateFormater = new Intl.DateTimeFormat('pt-br', {
-    dateStyle: 'full',
+    dateStyle: 'short',
   });
 
   return dateFormater.format(new Date(value));

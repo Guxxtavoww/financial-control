@@ -1,4 +1,6 @@
 /* eslint-disable indent */
+import React from 'react';
+
 import { formatColumnValue } from './helpers';
 import { ITableProps } from './types';
 import { TableContainer } from './styles';
@@ -37,7 +39,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 ) : (
                   <span className="table-cell-text">
                     {!column.formatTo
-                      ? (row[column.field] as string)
+                      ? (row[column.field] as React.ReactNode)
                       : formatColumnValue<T>(
                           column.formatTo,
                           row[column.field]

@@ -41,6 +41,7 @@ const Input: React.FC<IInputProps> = ({
         ref={inputRef}
         placeholder={placeholder}
         defaultValue={defaultValue}
+        type={type}
         {...rest}
       />
     </InputContainer>

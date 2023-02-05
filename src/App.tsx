@@ -3,7 +3,9 @@ import React, { lazy } from 'react';
 import Contexts from './contexts';
 import GlobalStyles from './styles/global';
 
-import { ToggleTheme } from './components';
+const ToggleTheme = lazy(() =>
+  import('./components').then(module => ({ default: module.ToggleTheme }))
+);
 const Finances = lazy(() =>
   import('./features').then(module => ({ default: module.Finances }))
 );

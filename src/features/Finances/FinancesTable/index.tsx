@@ -28,7 +28,11 @@ const FinancesTable: React.FC = () => {
                   columnTitle: 'Descrição',
                   alignTo: 'left',
                 },
-                { field: 'amount', columnTitle: 'Valor', formatTo: 'currency' },
+                {
+                  field: 'amount',
+                  columnTitle: 'Valor em R$',
+                  formatTo: 'currency',
+                },
                 {
                   field: undefined,
                   columnTitle: 'Tipo',

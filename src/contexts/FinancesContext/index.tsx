@@ -31,7 +31,9 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
 
   const removeFinance = useCallback(
     (financeId: string) => {
-      setFinances(prevState => prevState.filter(f => f.id !== financeId));
+      setFinances(prevState =>
+        prevState.filter(finance => finance.id !== financeId)
+      );
     },
     [setFinances]
   );

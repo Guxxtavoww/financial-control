@@ -1,4 +1,4 @@
-import React, { useId, useMemo, useRef } from 'react';
+import React, { useId, useRef } from 'react';
 import { useField } from '@unform/core';
 
 import { IInputProps } from '@/types';
@@ -15,9 +15,9 @@ const Input: React.FC<IInputProps> = ({
 }) => {
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
-  const uniqueId = useMemo(() => `${name}${inputId}`, [name, inputId]);
   const { fieldName, registerField, clearError, defaultValue } = useField(name);
-
+  
+  const uniqueId = `${name}${inputId}`;
   const path = type === 'checkbox' || type === 'radio' ? 'checked' : 'value';
 
   useIsomorphicLayoutEffect(() => {

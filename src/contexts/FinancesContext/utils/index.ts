@@ -11,5 +11,3 @@ export const getIncomeOrOutcome = (
       0
     );
 };
-
-export const getFullAmount = (income: number, outcome: number): number => income - outcome;

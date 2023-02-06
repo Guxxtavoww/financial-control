@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
 
-import { getFullAmount, getIncomeOrOutcome } from './utils';
+import { getIncomeOrOutcome } from './utils';
 import { FCWithChildren, IFinance } from '@/types';
 import { usePersitedState } from '@/hooks';
 
@@ -43,10 +43,7 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
     () => getIncomeOrOutcome('out', finances),
     [finances]
   );
-  const fullAmount = useMemo(
-    () => getFullAmount(income, outcome),
-    [income, outcome]
-  );
+  const fullAmount = useMemo(() => income - outcome, [income, outcome]);
 
   const hasFinances = useMemo(() => finances.length > 0, [finances]);
 

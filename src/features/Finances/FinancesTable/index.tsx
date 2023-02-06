@@ -3,12 +3,12 @@ import { IconButton } from '@material-ui/core';
 import { BiTrash } from 'react-icons/bi';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 
-import { TableCell, TableWrapper } from './styles';
-
 import { IFinance } from '@/types';
 import { Table } from '@/components';
 import { ContentRow, Button } from '@/styles/global';
 import { useFinances } from '@/contexts/FinancesContext';
+
+import { TableCell, TableWrapper } from './styles';
 
 const FinancesTable: React.FC = () => {
   const { finances, hasFinances, removeFinance, clearFinances } = useFinances();

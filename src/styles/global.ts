@@ -57,7 +57,12 @@ export const ContentRow = styled.div<{ hasBg?: boolean }>`
   }
 `;
 
-export const Button = styled(MUIButton)<{ bg?: string; color?: string }>`
+export const Button = styled(MUIButton)<{
+  bg?: string;
+  color?: string;
+  bgHover?: string;
+  bgColor?: string;
+}>`
   text-transform: unset !important;
   font-weight: 600;
   font-size: 12px;
@@ -71,7 +76,8 @@ export const Button = styled(MUIButton)<{ bg?: string; color?: string }>`
   color: ${props => props.color || '#fff'};
 
   &:hover {
-    background-color: #f00;
+    background-color: ${props => props.bgHover || '#f00'};
+    color: ${props => props.bgColor || '#fff'};
   }
 `;
 

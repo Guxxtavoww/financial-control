@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 
 export interface ITableColumn<T> {
-  columnName: string;
+  columnTitle: string;
   field: keyof T | undefined;
   alignTo?: CSSProperties['textAlign'];
   formatTo?: 'currency' | 'number' | 'date';

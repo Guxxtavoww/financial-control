@@ -25,13 +25,13 @@ const FinancesTable: React.FC = () => {
               columns={[
                 {
                   field: 'description',
-                  columnName: 'Descrição',
+                  columnTitle: 'Descrição',
                   alignTo: 'left',
                 },
-                { field: 'amount', columnName: 'Valor', formatTo: 'currency' },
+                { field: 'amount', columnTitle: 'Valor', formatTo: 'currency' },
                 {
                   field: undefined,
-                  columnName: 'Tipo',
+                  columnTitle: 'Tipo',
                   alignTo: 'center',
                   renderItem: row => {
                     const isEntry = row.type === 'in';
@@ -51,7 +51,7 @@ const FinancesTable: React.FC = () => {
                 },
                 {
                   field: undefined,
-                  columnName: '',
+                  columnTitle: '',
                   renderItem: row => (
                     <IconButton onClick={() => removeFinance(row.id!)}>
                       <BiTrash fill="#f00" />

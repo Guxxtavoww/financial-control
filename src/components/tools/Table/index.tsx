@@ -14,7 +14,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
         <tr key={`${Date.now()}theader${Math.random()}`}>
           {columns.map(column => (
             <th key={`${Date.now()}c${Math.random()}`}>
-              <h1 className="columnTitle">{column.columnName}</h1>
+              <h1 className="columnTitle">{column.columnTitle}</h1>
             </th>
           ))}
         </tr>
@@ -24,7 +24,7 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
           <tr key={index} tabIndex={index}>
             {columns.map(column => (
               <td
-                key={`${column.columnName}.${
+                key={`${column.columnTitle}.${
                   Math.random() + new Date().getTime()
                 }`}
                 style={{ textAlign: column.alignTo || 'center' }}

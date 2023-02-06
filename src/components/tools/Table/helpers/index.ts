@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { formatToCurrency, formatToDate } from '@/utils/formatValues';
+import { formatToCurrency, formatToDate, formatToNumber } from '@/utils/formatValues';
 
 import { ITableColumn } from '../types';
 
@@ -13,6 +13,6 @@ export const formatColumnValue = <T>(
     case 'date':
       return formatToDate(rowValue);
     default:
-      return Number(rowValue).toString();
+      return formatToNumber(rowValue);
   }
 };

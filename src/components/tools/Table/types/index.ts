@@ -8,9 +8,7 @@ export interface ITableColumn<T> {
   renderItem?: (row: T) => React.ReactNode | string;
 }
 
-type TableRows<T> = Array<T>;
-
 export interface ITableProps<T> {
   columns: Array<ITableColumn<T>>;
-  rows: TableRows<T>;
+  rows: T[];
 }

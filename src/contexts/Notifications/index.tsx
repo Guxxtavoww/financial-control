@@ -1,8 +1,7 @@
 import { createContext, useContext, useCallback, useState } from 'react';
 
 import { FCWithChildren } from '@/types';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
-import usePersitedState from '@/hooks/usePersitedState';
+import { useIsomorphicLayoutEffect, usePersitedState } from '@/hooks';
 
 interface INotificationsContextProps {
   pushNotification: (title: string, options?: NotificationOptions) => void;

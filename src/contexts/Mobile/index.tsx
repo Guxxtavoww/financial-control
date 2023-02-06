@@ -1,7 +1,7 @@
 import { createContext, useContext, useCallback, useState } from 'react';
 
 import { FCWithChildren } from '@/types';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '@/hooks';
 
 interface IMobileContextProps {
   isMobileDevice: boolean;

@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useMemo } from 'react';
 
 import { getFullAmount, getIncomeOrOutcome } from './utils';
 import { FCWithChildren, IFinance } from '@/types';
-import usePersitedState from '@/hooks/usePersitedState';
+import { usePersitedState } from '@/hooks';
 
 interface IFinanceContextProps {
   finances: IFinance[];
@@ -60,7 +60,7 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
         income,
         outcome,
         clearFinances,
-        hasFinances
+        hasFinances,
       }}
     >
       {children}

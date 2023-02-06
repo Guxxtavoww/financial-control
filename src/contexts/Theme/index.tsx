@@ -3,7 +3,7 @@ import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components
 
 import { FCWithChildren } from '@/types';
 import { Themes } from '@/styles/constants/types';
-import usePersitedState from '@/hooks/usePersitedState';
+import { usePersitedState } from '@/hooks';
 import light from '@/styles/themes/light';
 import dark from '@/styles/themes/dark';
 

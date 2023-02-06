@@ -3,7 +3,7 @@ import { useField } from '@unform/core';
 
 import { IInputProps } from '@/types';
 import { InputContainer, InputLabel } from './styles';
-import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '@/hooks';
 
 const Input: React.FC<IInputProps> = ({
   label,

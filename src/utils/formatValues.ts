@@ -1,5 +1,3 @@
-type DatesStyles = 'full' | 'short' | 'medium' | 'long';
-
 const formatToCurrency = (value: any): string => {
   const formater = new Intl.NumberFormat('pt-br', {
     style: 'currency',
@@ -10,13 +8,18 @@ const formatToCurrency = (value: any): string => {
   return formater.format(value);
 };
 
-const formatToDate = (value: any, dateStyle?: DatesStyles): string => {
-  const dateFormater = new Intl.DateTimeFormat('pt-br', {
-    dateStyle: dateStyle || 'short',
+const formatToDate = (
+  currentDate: any,
+  styleOfDate?: Intl.DateTimeFormatOptions['formatMatcher']
+): string => {
+  const dateFormatter = new Intl.DateTimeFormat('pt-br', {
+    formatMatcher: styleOfDate || 'basic',
   });
 
-  return dateFormater.format(new Date(value));
+  return dateFormatter.format(new Date(currentDate));
 };
+
+console.log(formatToDate(Date.now(), 'best fit'));
 
 export const formatToNumber = (
   value: any,

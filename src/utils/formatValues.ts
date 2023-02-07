@@ -19,8 +19,6 @@ const formatToDate = (
   return dateFormatter.format(new Date(currentDate));
 };
 
-console.log(formatToDate(Date.now(), 'best fit'));
-
 export const formatToNumber = (
   value: any,
   options?: Intl.NumberFormatOptions

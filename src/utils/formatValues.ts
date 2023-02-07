@@ -1,3 +1,5 @@
+type DatesStyles = 'full' | 'short' | 'medium' | 'long';
+
 const formatToCurrency = (value: any): string => {
   const formater = new Intl.NumberFormat('pt-br', {
     style: 'currency',
@@ -8,9 +10,9 @@ const formatToCurrency = (value: any): string => {
   return formater.format(value);
 };
 
-const formatToDate = (value: any): string => {
+const formatToDate = (value: any, dateStyle?: DatesStyles): string => {
   const dateFormater = new Intl.DateTimeFormat('pt-br', {
-    dateStyle: 'short',
+    dateStyle: dateStyle || 'short',
   });
 
   return dateFormater.format(new Date(value));

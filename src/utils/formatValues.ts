@@ -20,6 +20,7 @@ const formatToDate = (
     hour: hasMinutesAndHoursAndSecouds ? '2-digit' : undefined,
     second: hasMinutesAndHoursAndSecouds ? '2-digit' : undefined,
   });
+
   return dateFormatter.format(new Date(currentDate));
 };
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Close as CloseIcon } from '@material-ui/icons';
@@ -7,6 +6,7 @@ import {
   useSnackbar,
   SnackbarKey,
 } from 'notistack';
+
 import { FCWithChildren } from '@/types';
 
 const SnackbarCloseButton: React.FC<{ id: SnackbarKey }> = ({ id }) => {

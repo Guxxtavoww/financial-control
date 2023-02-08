@@ -10,12 +10,16 @@ const formatToCurrency = (value: any): string => {
 
 const formatToDate = (
   currentDate: any,
-  styleOfDate?: Intl.DateTimeFormatOptions['formatMatcher']
+  hasMinutesAndHoursAndSecouds?: boolean
 ): string => {
   const dateFormatter = new Intl.DateTimeFormat('pt-br', {
-    formatMatcher: styleOfDate || 'basic',
+    year: 'numeric',
+    day: '2-digit',
+    month: '2-digit',
+    minute: hasMinutesAndHoursAndSecouds ? '2-digit' : undefined,
+    hour: hasMinutesAndHoursAndSecouds ? '2-digit' : undefined,
+    second: hasMinutesAndHoursAndSecouds ? '2-digit' : undefined,
   });
-
   return dateFormatter.format(new Date(currentDate));
 };
 

@@ -1,8 +1,9 @@
 import { createContext, useCallback, useContext, useMemo } from 'react';
 
-import { getIncomeOrOutcome } from './utils';
 import { FCWithChildren, IFinance } from '@/types';
 import { usePersitedState } from '@/hooks';
+
+import { getIncomeOrOutcome } from './utils';
 
 interface IFinanceContextProps {
   finances: IFinance[];

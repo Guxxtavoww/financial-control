@@ -7,7 +7,7 @@ export const getIncomeOrOutcome = (
   return finance
     .filter(item => item.type === key)
     .reduce(
-      (prevValue, currentValue) => prevValue + Number(currentValue.amount),
+      (prevValue, currentValue) => prevValue + currentValue.amount,
       0
     );
 };

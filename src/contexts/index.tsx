@@ -4,11 +4,10 @@ import { FCWithChildren } from '@/types';
 import { ComposeProviders } from '@/components';
 import { ScreenLoader } from '@/styles/global';
 
-import { SnackbarProvider } from './Snackbar';
-import { MobileProvider } from './Mobile';
-import { NotificationsProvider } from './Notifications';
-import { FinancesProvider } from './FinancesContext';
 import { ThemeProvider } from './Theme';
+import { MobileProvider } from './Mobile';
+import { SnackbarProvider } from './Snackbar';
+import { FinancesProvider } from './FinancesContext';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
   <Suspense fallback={<ScreenLoader />}>
@@ -16,7 +15,6 @@ const Contexts: FCWithChildren<{}, true> = ({ children }) => (
       with={[
         ThemeProvider,
         SnackbarProvider,
-        NotificationsProvider,
         MobileProvider,
         FinancesProvider,
       ]}

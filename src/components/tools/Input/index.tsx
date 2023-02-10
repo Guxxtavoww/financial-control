@@ -2,8 +2,9 @@ import React, { useId, useRef } from 'react';
 import { useField } from '@unform/core';
 
 import { IInputProps } from '@/types';
-import { InputContainer, InputLabel } from './styles';
 import { useIsomorphicLayoutEffect } from '@/hooks';
+
+import { InputContainer, InputLabel } from './styles';
 
 const Input: React.FC<IInputProps> = ({
   label,

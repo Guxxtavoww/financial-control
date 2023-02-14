@@ -27,17 +27,22 @@ function Table<T>(props: ITableProps<T>): JSX.Element {
                 key={`${column.columnTitle}.${
                   Math.random() + new Date().getTime()
                 }`}
-                style={{ textAlign: column.alignTo || 'center' }}
                 className="table-cell"
               >
                 {!column.field ? (
-                  <div className="render-item-wrapper">
+                  <div
+                    className="render-item-wrapper"
+                    style={{ textAlign: column.alignTo || 'center' }}
+                  >
                     {column.renderItem
                       ? column.renderItem(row)
                       : 'Não há itens pra renderizar'}
                   </div>
                 ) : (
-                  <span className="table-cell-text">
+                  <span
+                    className="table-cell-text"
+                    style={{ textAlign: column.alignTo || 'center' }}
+                  >
                     {!column.formatTo
                       ? (row[column.field] as React.ReactNode)
                       : formatColumnValue<T>(

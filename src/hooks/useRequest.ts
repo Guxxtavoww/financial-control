@@ -9,7 +9,7 @@ interface HookResponse<T> {
   errorMessage?: string;
 }
 
-function useRequest<T>(endpoint: string, method: Method): HookResponse<T> {
+function useRequest<T = any>(endpoint: string, method: Method): HookResponse<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();

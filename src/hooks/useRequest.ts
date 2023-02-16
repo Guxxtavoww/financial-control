@@ -51,3 +51,5 @@ function useRequest<T = any>(
 }
 
 export default useRequest;
+
+// usage -> const { data: SomeType | defaultType = any, isLoading, errorMessage } = useRequest<SomeType>('/endpoint', 'GET');

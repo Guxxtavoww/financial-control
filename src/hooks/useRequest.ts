@@ -6,7 +6,7 @@ import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 interface HookResponse<T> {
   data: T | null;
   isLoading: boolean;
-  errorMessage: string | undefined;
+  errorMessage?: string;
 }
 
 function useRequest<T>(endpoint: string, method: Method): HookResponse<T> {

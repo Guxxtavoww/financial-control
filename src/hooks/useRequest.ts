@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import axios, { Method } from 'axios';
 
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
@@ -9,23 +9,29 @@ interface HookResponse<T> {
   errorMessage?: string;
 }
 
-function useRequest<T = any>(endpoint: string, method: Method): HookResponse<T> {
+function useRequest<T = any>(
+  endpoint: string,
+  method: Method
+): HookResponse<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
+  const axiosInstance = useMemo(
+    () =>
+      axios.create({
+        baseURL: 'https://dummyjson.com',
+      }),
+    []
+  );
+
   useIsomorphicLayoutEffect(() => {
     const abortController = new AbortController();
-
-    const axiosInstance = axios.create({
-      baseURL: 'vem do .env',
-      signal: abortController.signal,
-    });
 
     setIsLoading(true);
 
     axiosInstance
-      .request<T>({ method, url: endpoint })
+      .request<T>({ method, url: endpoint, signal: abortController.signal })
       .then(res => {
         setData(res.data);
         setErrorMessage(undefined);

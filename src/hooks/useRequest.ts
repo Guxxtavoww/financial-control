@@ -26,12 +26,12 @@ function useRequest<T = any>(
   );
 
   useIsomorphicLayoutEffect(() => {
-    const abortController = new AbortController();
+    const { signal, abort } = new AbortController();
 
     setIsLoading(true);
 
     axiosInstance
-      .request<T>({ method, url: endpoint, signal: abortController.signal })
+      .request<T>({ method, url: endpoint, signal })
       .then(res => {
         setData(res.data);
         setErrorMessage(undefined);
@@ -44,7 +44,7 @@ function useRequest<T = any>(
         setIsLoading(false);
       });
 
-    return () => abortController.abort();
+    return () => abort();
   }, [endpoint, method]);
 
   return { data, isLoading, errorMessage };

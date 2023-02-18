@@ -1,11 +1,11 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface ITableColumn<T> {
   columnTitle: string;
   field: keyof T | undefined;
   alignTo?: CSSProperties['textAlign'];
   formatTo?: 'currency' | 'number' | 'date';
-  renderItem?: (row: T) => React.ReactNode | string;
+  renderItem?: (row: T) => ReactNode | string;
 }
 
 export interface ITableProps<T> {

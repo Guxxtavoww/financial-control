@@ -4,7 +4,7 @@ const api = axios.create({ baseURL: 'https://dummyjson.com' });
 
 const errorAlert = (error?: string) => {
   alert('Erro de api');
-  throw new Error(error || 'Erro de api');
+  console.log(error || 'Erro de api');
 };
 
 api.interceptors.response.use(

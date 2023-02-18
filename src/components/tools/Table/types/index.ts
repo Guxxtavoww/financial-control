@@ -5,7 +5,7 @@ export interface ITableColumn<T> {
   field: keyof T | undefined;
   alignTo?: CSSProperties['textAlign'];
   formatTo?: 'currency' | 'number' | 'date';
-  renderItem?: (row: T) => ReactNode | string;
+  renderItem?: (row: T) => ReactNode;
 }
 
 export interface ITableProps<T> {

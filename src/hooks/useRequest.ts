@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
-import axios, { Method } from 'axios';
+import { useState } from 'react';
+import { Method } from 'axios';
 
+import api from '@/services/api';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 interface HookResponse<T> {
@@ -17,20 +18,12 @@ function useRequest<T = any>(
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
-  const axiosInstance = useMemo(
-    () =>
-      axios.create({
-        baseURL: 'https://dummyjson.com',
-      }),
-    []
-  );
-
   useIsomorphicLayoutEffect(() => {
     const { signal, abort } = new AbortController();
 
     setIsLoading(true);
 
-    axiosInstance
+    api
       .request<T>({ method, url: endpoint, signal })
       .then(res => {
         setData(res.data);

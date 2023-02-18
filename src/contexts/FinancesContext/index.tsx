@@ -39,14 +39,14 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
     [setFinances]
   );
 
-  const income = useMemo(() => getIncomeOrOutcome('in', finances), [finances]);
-  const outcome = useMemo(
-    () => getIncomeOrOutcome('out', finances),
-    [finances]
-  );
-  const fullAmount = useMemo(() => income - outcome, [income, outcome]);
+  const { fullAmount, hasFinances, income, outcome } = useMemo(() => {
+    const income = getIncomeOrOutcome('in', finances);
+    const outcome = getIncomeOrOutcome('out', finances);
+    const fullAmount = income - outcome;
+    const hasFinances = finances.length > 0;
 
-  const hasFinances = useMemo(() => finances.length > 0, [finances]);
+    return { income, outcome, fullAmount, hasFinances };
+  }, [finances]);
 
   const clearFinances = () => setFinances([]);
 

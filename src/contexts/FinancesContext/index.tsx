@@ -24,8 +24,8 @@ export const FinancesProvider: FCWithChildren<{}, true> = ({ children }) => {
   const [finances, setFinances] = usePersitedState<IFinance[]>('finances', []);
 
   const addFinance = useCallback((finance: IFinance) => {
-    const now = Date.now().toString();
-    const newFinance: IFinance = { id: now, ...finance };
+    const id = Date.now().toString();
+    const newFinance: IFinance = { id, ...finance };
 
     setFinances(prevFiances => [...prevFiances, newFinance]);
   }, []);

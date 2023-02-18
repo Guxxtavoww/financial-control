@@ -10,18 +10,11 @@ import { SnackbarProvider } from './Snackbar';
 import { FinancesProvider } from './FinancesContext';
 
 const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <Suspense fallback={<ScreenLoader />}>
-    <ComposeProviders
-      with={[
-        ThemeProvider,
-        SnackbarProvider,
-        MobileProvider,
-        FinancesProvider,
-      ]}
-    >
-      {children}
-    </ComposeProviders>
-  </Suspense>
+  <ComposeProviders
+    with={[ThemeProvider, SnackbarProvider, MobileProvider, FinancesProvider]}
+  >
+    <Suspense fallback={<ScreenLoader />}>{children}</Suspense>
+  </ComposeProviders>
 );
 
 export default Contexts;

@@ -24,3 +24,5 @@ export type FCWithChildren<
 > = FC<IsChildrenRequired extends true ? T & Children : T & Partial<Children>>;
 
 export type LooseAutoComplete<T extends string> = T | Omit<string, T>;
+
+export type Languages = LooseAutoComplete<'pt-br' | 'en' | 'es'>;

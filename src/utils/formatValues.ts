@@ -1,4 +1,6 @@
-const formatToCurrency = (value: any): string => {
+import { Languages } from '@/types';
+
+export const formatToCurrency = (value: any): string => {
   const formater = new Intl.NumberFormat('pt-br', {
     style: 'currency',
     currency: 'BRL',
@@ -8,7 +10,7 @@ const formatToCurrency = (value: any): string => {
   return formater.format(value);
 };
 
-const formatToDate = (
+export const formatToDate = (
   currentDate: any,
   hasMinutesAndHoursAndSecouds?: boolean
 ): string => {
@@ -33,4 +35,14 @@ export const formatToNumber = (
   return formater.format(value);
 };
 
-export { formatToCurrency, formatToDate };
+export const formatRelativeTime = (
+  value: number,
+  lang?: Languages,
+  formatType?: Intl.RelativeTimeFormatUnit
+): string => {
+  const formater = new Intl.RelativeTimeFormat(String(lang || 'pt-br'), {
+    numeric: 'auto',
+  });
+
+  return formater.format(value, formatType || 'day');
+};

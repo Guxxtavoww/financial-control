@@ -1,12 +1,18 @@
 /* eslint-disable indent */
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { formatColumnValue } from './helpers';
 import { ITableProps } from './types';
 import { TableContainer } from './styles';
 
 function Table<T>(props: ITableProps<T>): JSX.Element {
-  const { columns, rows } = props;
+  const { columns, rows, noDataMessage } = props;
+
+  const hasRows = useMemo(() => rows.length > 0, [rows.length]);
+
+  if (!hasRows) {
+    return <span>{noDataMessage || 'Não há dados'}</span>;
+  }
 
   return (
     <TableContainer>

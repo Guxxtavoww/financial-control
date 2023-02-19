@@ -11,4 +11,5 @@ export interface ITableColumn<T> {
 export interface ITableProps<T> {
   columns: Array<ITableColumn<T>>;
   rows: T[];
+  noDataMessage?: string;
 }

@@ -37,8 +37,8 @@ export const formatToNumber = (
 
 export const formatRelativeTime = (
   value: number,
-  lang?: Languages,
-  formatType?: Intl.RelativeTimeFormatUnit
+  formatType?: Intl.RelativeTimeFormatUnit,
+  lang?: Languages
 ): string => {
   const formater = new Intl.RelativeTimeFormat(String(lang || 'pt-br'), {
     numeric: 'auto',

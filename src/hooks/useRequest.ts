@@ -12,7 +12,7 @@ interface HookResponse<T> {
 
 function useRequest<T = any>(
   endpoint: string,
-  method: Method
+  method?: Method
 ): HookResponse<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ function useRequest<T = any>(
     setIsLoading(true);
 
     api
-      .request<T>({ method, url: endpoint, signal })
+      .request<T>({ method: method || 'GET', url: endpoint, signal })
       .then(res => {
         setData(res.data);
         setErrorMessage(undefined);

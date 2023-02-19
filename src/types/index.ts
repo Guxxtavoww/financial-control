@@ -14,17 +14,13 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   isRow?: boolean;
 }
 
-export interface IChildrenInterface {
+export type Children = {
   children: ReactNode;
-}
+};
 
 export type FCWithChildren<
-  T = {},
+  T extends object = {},
   IsChildrenRequired extends boolean = false
-> = FC<
-  IsChildrenRequired extends true
-    ? T & IChildrenInterface
-    : T & Partial<IChildrenInterface>
->;
+> = FC<IsChildrenRequired extends true ? T & Children : T & Partial<Children>>;
 
 export type LooseAutoComplete<T extends string> = T | Omit<string, T>;

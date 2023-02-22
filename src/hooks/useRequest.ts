@@ -3,25 +3,25 @@ import axios, { Method } from 'axios';
 
 import api from '@/services/api';
 
-interface IUseSearchRequestProps<T> {
+interface IUseRequestProps<T> {
   endpoint: string;
   params?: T;
   body?: T;
   method?: Method;
 }
 
-interface IUseSearchRequestResponse<T = any> {
+interface IUseRequestResponse<T = any> {
   data: T | null;
   errorMessage: string | undefined;
   isLoading: boolean;
 }
 
-function useSearchRequest<T = any, P extends object = {}>({
+function useRequest<T = any, P extends object = {}>({
   endpoint,
   params,
   body,
   method,
-}: IUseSearchRequestProps<P>): IUseSearchRequestResponse<T> {
+}: IUseRequestProps<P>): IUseRequestResponse<T> {
   const [data, setData] = useState<T | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
@@ -64,4 +64,4 @@ function useSearchRequest<T = any, P extends object = {}>({
   return { data, errorMessage, isLoading };
 }
 
-export default useSearchRequest;
+export default useRequest;

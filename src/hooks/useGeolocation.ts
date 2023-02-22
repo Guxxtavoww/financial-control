@@ -3,8 +3,8 @@ import { useCallback, useState } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 function useGeolocation(options?: PositionOptions) {
-  const [error, setError] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<GeolocationPositionError>();
   const [coords, setCoords] = useState<GeolocationCoordinates | null>(null);
 
   const sucessHandler = useCallback((sucess: GeolocationPosition) => {
@@ -14,7 +14,7 @@ function useGeolocation(options?: PositionOptions) {
   }, []);
 
   const errorHandler = useCallback((error: GeolocationPositionError) => {
-    setError(error.message);
+    setError(error);
     setIsLoading(false);
     setCoords(null);
   }, []);

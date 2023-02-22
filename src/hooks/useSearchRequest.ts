@@ -5,7 +5,8 @@ import api from '@/services/api';
 
 interface IUseSearchRequestProps<T> {
   endpoint: string;
-  params: T;
+  params?: T;
+  body?: T;
   method?: Method;
 }
 
@@ -18,6 +19,7 @@ interface IUseSearchRequestResponse<T = any> {
 function useSearchRequest<T = any, P extends object = {}>({
   endpoint,
   params,
+  body,
   method,
 }: IUseSearchRequestProps<P>): IUseSearchRequestResponse<T> {
   const [data, setData] = useState<T | null>(null);
@@ -38,6 +40,7 @@ function useSearchRequest<T = any, P extends object = {}>({
         params,
         cancelToken: source.token,
         signal: controller.signal,
+        ...body,
       })
         .then(response => {
           setData(response.data);
@@ -56,7 +59,7 @@ function useSearchRequest<T = any, P extends object = {}>({
       controller.abort();
       source.cancel('Operation canceled by the user.');
     };
-  }, [params, endpoint, method]);
+  }, [params, endpoint, method, body]);
 
   return { data, errorMessage, isLoading };
 }

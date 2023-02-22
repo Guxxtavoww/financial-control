@@ -29,7 +29,7 @@ function useSearchRequest<T = any, P extends object = {}>({
     let canceler: Canceler;
 
     (async () => {
-      await api({
+      await api<T>({
         method: method || 'GET',
         url: endpoint,
         params,

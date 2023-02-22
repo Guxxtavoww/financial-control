@@ -1,5 +1,5 @@
-import { useState, useLayoutEffect, useCallback, useRef } from 'react';
-import axios, { Method, isCancel, Canceler } from 'axios';
+import { useState, useLayoutEffect } from 'react';
+import axios, { Method, Canceler } from 'axios';
 
 import api from '@/services/api';
 
@@ -24,39 +24,34 @@ function useSearchRequest<T = any, P extends object = {}>({
   const [errorMessage, setErrorMessage] = useState<string>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const canceler = useRef<Canceler>();
-
-  const handleRequest = useCallback(async () => {
+  useLayoutEffect(() => {
     setIsLoading(true);
+    let canceler: Canceler;
 
-    await api
-      .request<T>({
+    (async () => {
+      await api({
         method: method || 'GET',
         url: endpoint,
         params,
         cancelToken: new axios.CancelToken(c => {
-          canceler.current = c;
+          canceler = c;
         }),
       })
-      .then(response => {
-        setData(response.data);
-        setErrorMessage(undefined);
-      })
-      .catch(err => {
-        if (isCancel(err)) return;
-        setData(null);
-        setErrorMessage(err.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+        .then(response => {
+          setData(response.data);
+          setErrorMessage(undefined);
+        })
+        .catch(err => {
+          setData(null);
+          setErrorMessage(err.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    })();
 
-    return () => (canceler.current ? canceler.current() : null);
-  }, [endpoint, params, method]);
-
-  useLayoutEffect(() => {
-    handleRequest();
-  }, [handleRequest]);
+    return () => canceler();
+  }, [params, endpoint, method]);
 
   return { data, errorMessage, isLoading };
 }

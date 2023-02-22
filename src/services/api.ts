@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { isCancel } from 'axios';
 
-const api = axios.create({ baseURL: 'https://dummyjson.com' });
+const api = axios.create({ baseURL: 'http://openlibrary.org' });
 
 const errorAlert = (error?: string) => {
   alert('Erro de api');
@@ -17,6 +17,7 @@ api.interceptors.response.use(
     return Promise.resolve(resonse);
   },
   error => {
+    if (isCancel(error)) return;
     errorAlert(error);
     return Promise.reject(error);
   }

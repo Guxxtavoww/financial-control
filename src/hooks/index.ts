@@ -1,4 +1,3 @@
-export { default as useRequest } from './useRequest';
 export { default as useGeolocation } from './useGeolocation';
 export { default as useClickOutside } from './useClickOutside';
 export { default as useSearchRequest } from './useSearchRequest';

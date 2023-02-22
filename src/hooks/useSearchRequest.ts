@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect } from 'react';
-import axios, { Method, Canceler } from 'axios';
+import axios, { Method } from 'axios';
 
 import api from '@/services/api';
 
@@ -25,17 +25,19 @@ function useSearchRequest<T = any, P extends object = {}>({
   const [isLoading, setIsLoading] = useState(false);
 
   useLayoutEffect(() => {
+    const controller = new AbortController();
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
+
     setIsLoading(true);
-    let canceler: Canceler;
 
     (async () => {
       await api<T>({
         method: method || 'GET',
         url: endpoint,
         params,
-        cancelToken: new axios.CancelToken(c => {
-          canceler = c;
-        }),
+        cancelToken: source.token,
+        signal: controller.signal,
       })
         .then(response => {
           setData(response.data);
@@ -50,7 +52,10 @@ function useSearchRequest<T = any, P extends object = {}>({
         });
     })();
 
-    return () => canceler();
+    return () => {
+      controller.abort();
+      source.cancel('Operation canceled by the user.');
+    };
   }, [params, endpoint, method]);
 
   return { data, errorMessage, isLoading };

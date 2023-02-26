@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { Button as MUIButton } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Button as MUIButton, CircularProgress } from '@material-ui/core';
 
 const GlobalStyles = createGlobalStyle`
   *,

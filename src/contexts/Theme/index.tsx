@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext } from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 
 import { FCWithChildren } from '@/types';
@@ -28,11 +28,14 @@ export const ThemeProvider: FCWithChildren<{}, true> = ({ children }) => {
 
   const setTheme = (themeName: Themes) => setCurrentTheme(themeName);
 
+  const theme = useMemo(
+    () => (currentTheme === 'light' ? light : dark),
+    [currentTheme]
+  );
+
   return (
     <ThemeContext.Provider value={{ toggleTheme, setTheme }}>
-      <StyledComponentThemeProvider
-        theme={currentTheme === 'light' ? light : dark}
-      >
+      <StyledComponentThemeProvider theme={theme}>
         {children}
       </StyledComponentThemeProvider>
     </ThemeContext.Provider>

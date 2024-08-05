@@ -1,5 +1,7 @@
 'use client';
 
+import { Trash } from 'lucide-react';
+import { revalidatePath } from 'next/cache';
 import {
   getCoreRowModel,
   getFacetedRowModel,
@@ -7,6 +9,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  type Table,
   useReactTable,
 } from '@tanstack/react-table';
 
@@ -15,9 +18,21 @@ import { useFinances } from '@/contexts/finances.context';
 import { formatToCurrency } from '@/utils/currency.util';
 import { DataTable } from '@/components/tools/data-table/data-table';
 import { DataTableColumnHeader } from '@/components/tools/data-table/data-table-column-header';
+import { DataTableExcelExport } from '@/components/tools/data-table/data-table-excel-export';
+import { Button } from '@/components/ui/button';
+import { Icon } from '@/components/tools/icon';
+import { CustomTooltip } from '@/components/tools/custom-tooltip';
+
+function FinanceTableFloatingBar({ table }: { table: Table<IFinance> }) {
+  return (
+    <div className="w-full flex items-center">
+      <DataTableExcelExport table={table} />
+    </div>
+  );
+}
 
 export function FinanceTable() {
-  const { finances } = useFinances();
+  const { finances, removeFinance } = useFinances();
 
   const table = useReactTable({
     data: finances,
@@ -63,6 +78,33 @@ export function FinanceTable() {
         enableSorting: true,
         enableHiding: false,
       },
+      {
+        id: 'sctions',
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Ações" />
+        ),
+        cell: ({ row }) => {
+          return (
+            <div className="flex items-center gap-2">
+              <CustomTooltip tooltipText="Deletar finança">
+                <Button
+                  size="icon"
+                  onClick={async () => {
+                    removeFinance(row.original.id);
+
+                    revalidatePath('/');
+                  }}
+                  variant="destructive"
+                >
+                  <Icon icon={Trash} size="sm" />
+                </Button>
+              </CustomTooltip>
+            </div>
+          );
+        },
+        enableSorting: false,
+        enableHiding: false,
+      },
     ],
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -72,5 +114,9 @@ export function FinanceTable() {
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  return <DataTable table={table} />;
+  return (
+    <DataTable table={table}>
+      <FinanceTableFloatingBar table={table} />
+    </DataTable>
+  );
 }

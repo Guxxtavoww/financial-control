@@ -12,7 +12,6 @@ import {
 import { cn } from '@/utils/cn.util';
 import { getCommonPinningStyles } from './utils';
 import { DataTablePagination } from './data-table-pagination';
-import { DataTableExcelExport } from './data-table-excel-export';
 
 interface DataTableProps<TData> extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -28,8 +27,6 @@ interface DataTableProps<TData> extends HTMLAttributes<HTMLDivElement> {
    * @example floatingBar={<TasksTableFloatingBar table={table} />}
    */
   floatingBar?: ReactNode | null;
-
-  hideExportButton?: boolean;
 }
 
 export function DataTable<TData>({
@@ -37,7 +34,6 @@ export function DataTable<TData>({
   floatingBar = null,
   children,
   className,
-  hideExportButton,
   ...props
 }: DataTableProps<TData>) {
   return (
@@ -45,10 +41,7 @@ export function DataTable<TData>({
       className={cn('w-full space-y-2.5 overflow-auto', className)}
       {...props}
     >
-      <div className="w-full">
-        {!hideExportButton && <DataTableExcelExport table={table} />}
-        {children}
-      </div>
+      {children}
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>

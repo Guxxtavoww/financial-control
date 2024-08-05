@@ -1,52 +1,45 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
-export default function useLocalStorage<T>(
+export function useLocalStorage<T>(
   key: string,
   initialValue: T
 ): [T, UseStateSetFn<T>] {
-  const [storedValue, setStoredValue] = useState<T>(initialValue);
-  const [firstLoadDone, setFirstLoadDone] = useState(false);
-
-  // Use an effect hook in order to prevent SSR inconsistencies and errors.
-  // This will update the state with the value from the local storage after
-  // the first initial value is applied.
-  useEffect(() => {
-    const fromLocal = () => {
-      if (typeof window === 'undefined') {
-        return initialValue;
-      }
-
-      try {
-        const item = window.localStorage.getItem(key);
-        return item ? (JSON.parse(item) as T) : initialValue;
-      } catch (error) {
-        console.error(error);
-        return initialValue;
-      }
-    };
-
-    // Set the value from localStorage
-    setStoredValue(fromLocal);
-    // First load is done
-    setFirstLoadDone(true);
-  }, [initialValue, key]);
-
-  // Instead of replacing the setState function, react to changes.
-  // Whenever the state value changes, save it in the local storage.
-  useEffect(() => {
-    // If it's the first load, don't store the value.
-    // Otherwise, the initial value will overwrite the local storage.
-    if (!firstLoadDone) return;
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    if (typeof window === 'undefined') return initialValue;
 
     try {
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(key, JSON.stringify(storedValue));
+      const item = window.localStorage.getItem(key);
+      return item ? (JSON.parse(item) as T) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    try {
+      const item = window.localStorage.getItem(key);
+      if (item) {
+        setStoredValue(JSON.parse(item) as T);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-  }, [storedValue, firstLoadDone, key]);
+  }, [key]);
 
-  // Return the original useState functions
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    try {
+      window.localStorage.setItem(key, JSON.stringify(storedValue));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [key, storedValue]);
+
   return [storedValue, setStoredValue];
 }

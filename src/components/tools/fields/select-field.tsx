@@ -24,6 +24,7 @@ export type SelectFieldProps<T extends Record<string, any>> = {
   valueAccessor: keyof T;
   selectLabel?: string;
   placeholder?: string;
+  className?: string;
 };
 
 export function SelectField<T extends Record<string, any>>({
@@ -35,6 +36,7 @@ export function SelectField<T extends Record<string, any>>({
   disabled,
   selectLabel,
   placeholder,
+  className,
 }: SelectFieldProps<T>) {
   const { control } = useFormContext();
 
@@ -45,7 +47,7 @@ export function SelectField<T extends Record<string, any>>({
       defaultValue={defaultValue}
       disabled={disabled}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           {selectLabel && <FormLabel>{selectLabel}</FormLabel>}
           <Select
             value={field.value ?? ''}

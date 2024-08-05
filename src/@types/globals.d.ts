@@ -8,6 +8,13 @@ declare global {
 
   type MyRecord = Record<string, string | undefined>;
 
+  export interface IFinance {
+    id: string;
+    description: string;
+    amount: number;
+    type: 'in' | 'out';
+  }
+
   export type UseStateSetFn<T> = Dispatch<SetStateAction<T>>;
 
   export type ServerComponentPageProps<

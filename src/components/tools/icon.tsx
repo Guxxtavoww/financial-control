@@ -21,11 +21,13 @@ const iconVariants = cva('fade-in-10 transition-all select-none', {
   },
 });
 
+export type IconType = ForwardRefExoticComponent<
+  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
+
 interface iIconProps extends VariantProps<typeof iconVariants> {
   className?: string;
-  icon: ForwardRefExoticComponent<
-    Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
-  >;
+  icon: IconType;
 }
 
 export const Icon = forwardRef<SVGSVGElement, iIconProps>(

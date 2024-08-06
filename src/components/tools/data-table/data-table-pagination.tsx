@@ -27,12 +27,14 @@ export function DataTablePagination<TData>({
   return (
     <div className="flex w-full flex-col-reverse items-center justify-between gap-4 overflow-auto p-1 sm:flex-row sm:gap-8">
       <div className="flex-1 whitespace-nowrap text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.length} of{' '}
-        {table.getFilteredRowModel().rows.length} row(s) selected.
+        {table.getFilteredSelectedRowModel().rows.length} de{' '}
+        {table.getFilteredRowModel().rows.length} linha(s) selecionada.
       </div>
       <div className="flex flex-col-reverse items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
         <div className="flex items-center space-x-2">
-          <p className="whitespace-nowrap text-sm font-medium">Rows per page</p>
+          <p className="whitespace-nowrap text-sm font-medium">
+            Linhas por página
+          </p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {
@@ -52,7 +54,7 @@ export function DataTablePagination<TData>({
           </Select>
         </div>
         <div className="flex items-center justify-center text-sm font-medium">
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
+          Página {table.getState().pagination.pageIndex + 1} de{' '}
           {table.getPageCount()}
         </div>
         <div className="flex items-center space-x-2">

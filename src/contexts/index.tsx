@@ -1,20 +1,21 @@
-import { Suspense } from 'react';
+'use client';
 
-import { FCWithChildren } from '@/types';
-import { ComposeProviders } from '@/components';
-import { ScreenLoader } from '@/styles/global';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import type { ThemeProviderProps } from 'next-themes/dist/types';
 
-import { ThemeProvider } from './Theme';
-import { MobileProvider } from './Mobile';
-import { SnackbarProvider } from './Snackbar';
-import { FinancesProvider } from './FinancesContext';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
-const Contexts: FCWithChildren<{}, true> = ({ children }) => (
-  <ComposeProviders
-    with={[ThemeProvider, SnackbarProvider, MobileProvider, FinancesProvider]}
-  >
-    <Suspense fallback={<ScreenLoader />}>{children}</Suspense>
-  </ComposeProviders>
-);
+import { FinancesProvider } from './finances.context';
 
-export default Contexts;
+export function Contexts({
+  children,
+  ...props
+}: WithChildren<ThemeProviderProps>): JSX.Element {
+  return (
+    <NextThemesProvider {...props}>
+      <FinancesProvider>
+        <TooltipProvider>{children}</TooltipProvider>
+      </FinancesProvider>
+    </NextThemesProvider>
+  );
+}

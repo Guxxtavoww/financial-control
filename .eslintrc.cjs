@@ -5,7 +5,6 @@ const config = {
     project: true,
   },
   plugins: [
-    '@typescript-eslint',
     'tailwindcss',
     'eslint-plugin-react-compiler',
   ],

@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: WithChildren) {
     <html lang="pt-br" suppressHydrationWarning>
       <body
         className={cn(
-          'bg-background font-sans antialiased',
+          'bg-background antialiased',
           inter.className
         )}
       >
